@@ -1,0 +1,167 @@
+<div class="content-wrapper">
+  <div class="page-header">
+    <h3 class="page-title"> Users </h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <div class="btn-group">
+            <button class="btn btn-warning btn-sm" onclick='cancelEntry()' id='btn_delete'>
+              <i style="font-size: 20px;" class="mdi mdi-close-circle"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" onclick='deleteEntry()' id='btn_delete'>
+              <i style="font-size: 20px;" class="mdi mdi-delete"></i>
+            </button>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Manage Transactions</h4>
+          <div class="table-responsive">
+            <table id="dt_entries" class="table table-bordered">
+              <thead>
+                <tr>
+                    <th><input type='checkbox' onchange="checkAll(this, 'dt_id')"></th>
+                    <th></th>
+                    <th>Reference #</th>
+                    <th>User</th>
+                    <th>Driver</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date Added</th>
+                    <th>Date Modified</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php require_once 'modal_transaction.php'; ?>
+<script type="text/javascript">
+    function cancelEntry() {
+      var count_checked = $("input[class='dt_id']:checked").length;
+
+      if (count_checked > 0) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover these entries!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, cancel it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+              var checkedValues = $("input[class='dt_id']:checked").map(function() {
+                return this.value;
+              }).get();
+
+              $.ajax({
+                type: "POST",
+                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=cancel",
+                data: {
+                  input: {
+                    ids: checkedValues
+                  }
+                },
+                success: function(data) {
+                  getEntries();
+                  var json = JSON.parse(data);
+                  console.log(json);
+                  if (json.data == 1) {
+                    success_cancel();
+                  } else {
+                    failed_query(json);
+                  }
+                }
+              });
+
+              $("#btn_delete").prop('disabled', true);
+
+            } else {
+              swal("Cancelled", "Entries are safe :)", "error");
+            }
+          });
+      } else {
+        swal("Cannot proceed!", "Please select entries to delete!", "warning");
+      }
+    }
+
+    function getUserDetails(id){
+        $("#div_password").hide();
+        getEntryDetails(id);
+    }
+
+    function getEntries() {
+        $("#dt_entries").DataTable().destroy();
+        $("#dt_entries").DataTable({
+            "processing": true,
+            "ajax": {
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show",
+                "dataSrc": "data"
+            },
+            "columns": [{
+                    "mRender": function(data, type, row) {
+                        return "<input type='checkbox' value=" + row.transaction_id + " class='dt_id' style='position: initial; opacity:1;'>";
+                    }
+                },
+                {
+                    "mRender": function(data, type, row) {
+                      return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.transaction_id + ")'><span class='mdi mdi-file-document'></span></button></center>";
+                    }
+                },
+                {
+                    "data": "ref_number"
+                },
+                {
+                    "data": "user"
+                },
+                {
+                    "data": "driver"
+                },
+                {
+                    "data": "amount"
+                },
+                {
+                  "mRender": function(data, type, row) {
+
+                    if(row.status == "P"){
+                      return "<strong style='color:#ff9800;'>Pending</strong>";
+                    }else if(row.status == "C"){
+                      return "<strong style='color:red;'>Cancel</strong>";
+                    }else if(row.status == "A"){
+                      return "<strong style='color:#3f51b5;'>On-the-way</strong>";
+                    }else{
+                      return "<strong style='color:green;'>Finished</strong>";
+                    }
+                      
+                  }
+                },
+                {
+                    "data": "date_added"
+                },
+                {
+                    "data": "date_last_modified"
+                }
+            ]
+        });
+    }
+
+    $(document).ready(function() {
+        getEntries();
+        getSelectOption('Users', 'user_id', 'user_fullname', "category='U'");
+        getSelectOption('Users', 'driver_id', 'user_fullname', "category='D'");
+    });
+</script>
