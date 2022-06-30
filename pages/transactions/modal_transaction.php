@@ -19,7 +19,7 @@
                         <div class="col-sm-6">
                             <label><strong>Driver</strong></label>
                             <div>
-                            <select class="select2 form-control input-item" name="input[driver_id]" id="driver_id" required>
+                            <select class="form-control input-item" name="input[driver_id]" id="driver_id" required>
                             </select>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-sm-6">
                             <label><strong>User</strong></label>
                             <div>
-                            <select class="select2 form-control input-item" name="input[user_id]" id="user_id" required>
+                            <select class="form-control input-item" name="input[user_id]" id="user_id" required>
                             </select>
                             </div>
                         </div>

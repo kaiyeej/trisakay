@@ -70,6 +70,7 @@ class Users extends Connection
         $rows = array();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
+            $row['driver_id'] = $row['user_id'];
             $row['user_fullname'] = $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
             $row['category'] = $row['category'] == "A" ? "Admin" :  ($row['category'] == "U" ? "User" : "Driver");
             $rows[] = $row;
