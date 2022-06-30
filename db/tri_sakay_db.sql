@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2022 at 04:44 AM
+-- Generation Time: Jun 30, 2022 at 07:33 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `tri_sakay_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ratings`
+--
+
+CREATE TABLE `tbl_ratings` (
+  `rating_id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
+  `rating` int(1) NOT NULL,
+  `remarks` text NOT NULL,
+  `date_last_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,7 +61,7 @@ CREATE TABLE `tbl_transactions` (
 --
 
 INSERT INTO `tbl_transactions` (`transaction_id`, `ref_number`, `user_id`, `driver_id`, `starting_point`, `end_point`, `amount`, `status`, `remarks`, `date_added`, `date_last_modified`) VALUES
-(1, 23123123, 4, 0, NULL, NULL, NULL, 'P', '', NULL, '2022-06-29 15:42:50');
+(1, 23123123, 4, 3, NULL, NULL, NULL, 'C', '', NULL, '2022-06-29 15:42:50');
 
 -- --------------------------------------------------------
 
@@ -85,6 +99,12 @@ INSERT INTO `tbl_users` (`user_id`, `user_fname`, `user_mname`, `user_lname`, `a
 --
 
 --
+-- Indexes for table `tbl_ratings`
+--
+ALTER TABLE `tbl_ratings`
+  ADD PRIMARY KEY (`rating_id`);
+
+--
 -- Indexes for table `tbl_transactions`
 --
 ALTER TABLE `tbl_transactions`
@@ -99,6 +119,12 @@ ALTER TABLE `tbl_users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_ratings`
+--
+ALTER TABLE `tbl_ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_transactions`
