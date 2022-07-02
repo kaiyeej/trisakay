@@ -31,6 +31,7 @@ if (!isset($_SESSION["trisakay_user_id"])) {
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logo.png" />
   </head>
+  
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
