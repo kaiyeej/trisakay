@@ -18,7 +18,7 @@ define("database", "count_me_in_db");*/
 
 // online
 define("host", "localhost");
-define("username", "u981310152_root");
+define("username", "u981310152_trisakay_root");
 define("password", "triSakay123!");
 define("database", "u981310152_trisakay");
 /** Auth **/
