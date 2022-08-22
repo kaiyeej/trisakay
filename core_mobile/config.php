@@ -8,9 +8,9 @@ date_default_timezone_set('UTC');
 $today = date('H:i:s');
 $system_date = date('Y-m-d H:i:s', strtotime($today) + 28800);
 
-session_start();
+// session_start();
 
-$host       = host;
+$host     = host;
 $username = username;
 $password = password;
 $database = database;
@@ -20,11 +20,11 @@ $database = database;
 //@mysqli_query("SET SESSION sql_mode=''");
 
 $mysqli_connect = new mysqli($host, $username, $password, $database);
-$mysqli_connect->query("SET SESSION sql_mode=''");
+// $mysqli_connect->query("SET SESSION sql_mode=''");
 
-if (mysqli_connect_error()) {
-    die("Connection failed : " . mysqli_connect_error());
-}
+// if (mysqli_connect_error()) {
+//     die("Connection failed : " . mysqli_connect_error());
+// }
 
 // if (empty($_SESSION['token'])) {
 //     if (function_exists('mcrypt_create_iv')) {
@@ -36,8 +36,8 @@ if (mysqli_connect_error()) {
 // $token = $_SESSION['token'];
 
 
-foreach (unserialize(VALUE) as $val) {
-    if (!empty($val)) {
-        include  __DIR__ . '/' . $val;
-    }
-}
+// foreach (unserialize(VALUE) as $val) {
+//     if (!empty($val)) {
+//         include  __DIR__ . '/' . $val;
+//     }
+// }

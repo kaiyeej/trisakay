@@ -7,19 +7,28 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once '../core_mobile/config.php';
 
-$data = json_decode(file_get_contents("php://input"));
-
-if (isset($data->username) && isset($data->password)) {
-	$username = $mysqli_connect->real_escape_string($data->username);
-	$password = $mysqli_connect->real_escape_string($data->password);
-
-	// count users
-	$fetch_users = $mysqli_connect->query("SELECT count(user_id), user_id from tbl_users where username='$username' and password=md5('$password')");
-	$count_users = $fetch_users->fetch_array();
-	if ($count_users[0] == 0) {
-		// cannot find account
-		echo -1;
-	} else {
-		echo $count_users[1];
-	}
+// //$data = json_decode(file_get_contents("php://input"));
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
+$id_token = $_REQUEST['idtoken'];
+$response_array['array_data'] = array();
+if (isset($username) && isset($password)) {
+    $fetch_users = $mysqli_connect->query("SELECT count(user_id) as ctr, user_id,category FROM tbl_users where username='$username' AND password=md5('$password') AND category!='A'");
+    $count_users = $fetch_users->fetch_array();
+    $response = array();
+    if ($count_users['category'] == 'U') {
+        $getUser = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$count_users[user_id]'");
+        $data = $getUser->fetch_array();
+        $mysqli_connect->query("UPDATE `tbl_users` SET `id_token`='$id_token' WHERE `user_id`='$count_users[user_id]'");
+        $response["user_fname"] = $data['user_fname'];
+        $response["user_lname"] = $data['user_lname'];
+        $response["contact_number"] = $data['contact_number'];
+        $response["category"] = $data['category'];
+        $response["username"] = $data['username'];
+        $response["user_id"] = $data['user_id'];
+        $response["response"] = 1;
+    }
+    // $response["response"] = -1;
 }
+array_push($response_array['array_data'], $response);
+echo json_encode($response_array);

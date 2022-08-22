@@ -49,5 +49,3 @@ if(isset($_POST['userlogin'])){
 		exit;
 	}
 }
-
-?>
