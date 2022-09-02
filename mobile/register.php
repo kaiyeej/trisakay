@@ -7,18 +7,15 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once '../core_mobile/config.php';
 
-$data = json_decode(file_get_contents("php://input"));
-
+$fname = $_REQUEST['fname'];
+$mname = $_REQUEST['mname'];
+$lname = $_REQUEST['lname'];
+$address = $_REQUEST['address'];
+$contactNumber = $_REQUEST['contactNumber'];
+$username = $_REQUEST['username'];
+$password = $_REQUEST['password'];
 if (isset($data->username) && isset($data->password)) {
-	$u_fname = $mysqli_connect->real_escape_string($data->u_fname);
-	$u_mname = $mysqli_connect->real_escape_string($data->u_mname);
-	$u_lname = $mysqli_connect->real_escape_string($data->u_lname);
-	$u_gender = $mysqli_connect->real_escape_string($data->u_gender);
-	$u_contact_num = $mysqli_connect->real_escape_string($data->u_contact_num);
-	$u_address = $mysqli_connect->real_escape_string($data->u_address);
-	$username = $mysqli_connect->real_escape_string($data->username);
-	$password = $mysqli_connect->real_escape_string($data->password);
-	$date = getCurrentDate();
+
 
 	$fetch_rows = $mysqli_connect->query("SELECT COUNT(user_id) AS counter from tbl_users WHERE user_fname='$u_fname' AND user_mname='$u_mname' AND user_lname='$u_lname'");
 	$user_row = $fetch_rows->fetch_array();
