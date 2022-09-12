@@ -14,24 +14,27 @@ $address = $_REQUEST['address'];
 $contactNumber = $_REQUEST['contactNumber'];
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
-if (isset($data->username) && isset($data->password)) {
+$date = getCurrentDate();
+$response_array['array_data'] = array();
+if (isset($username) && isset($password)) {
 
+	$response = array();
+	$fetch_rows = $mysqli_connect->query("SELECT COUNT(user_id) as counter from tbl_users WHERE user_fname='$fname' AND user_mname='$mname' AND user_lname='$lname'");
+	$row = $fetch_rows->fetch_array();
 
-	$fetch_rows = $mysqli_connect->query("SELECT COUNT(user_id) AS counter from tbl_users WHERE user_fname='$u_fname' AND user_mname='$u_mname' AND user_lname='$u_lname'");
-	$user_row = $fetch_rows->fetch_array();
+	if ($row['counter'] == 0) {
 
-	if ($user_row['counter'] == 0) {
-
-		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `gender`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`) VALUES ('$u_fname', '$u_mname', '$u_lname', '$u_gender', '$u_address', '$u_contact_num', 'U', '$username', md5('$password'), '$date')");
+		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`) VALUES ('$fname','$mname','$lname','$address','$contactNumber','U','$username',md5('$password'),'$date')");
 
 		if ($sql) {
-			echo $mysqli_connect->insert_id;
+			$response["res"] =  $mysqli_connect->insert_id;
 		} else {
-			echo 0;
+			$response["res"] = 0;
 		}
 	} else {
 		// user not in database
-		echo -2;
+		$response["res"] = 0;
 	}
-	// echo $u_fname;
 }
+array_push($response_array['array_data'], $response);
+echo json_encode($response_array);
