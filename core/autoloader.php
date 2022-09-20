@@ -7,5 +7,6 @@ $classes = array(
     'Users'             => $pre_class . 'users.php',
     'LoginUser'         => $pre_class . 'loginuser.php',
     'Transactions'      => $pre_class . 'transactions.php',
+    'Profile'           => $pre_class . 'profile.php',
 
 );

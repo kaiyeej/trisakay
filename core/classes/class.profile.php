@@ -15,7 +15,10 @@ class Profile extends Connection
         } else {
             $pass = $this->inputs['password'];
             $form = array(
-                'user_fullname' => $this->inputs['user_fullname'],
+                'user_fname' => $this->inputs['user_fname'],
+                'user_mname' => $this->inputs['user_mname'],
+                'user_lname' => $this->inputs['user_lname'],
+                'contact_number' => $this->inputs['contact_number'],
                 'user_category' => $this->inputs['user_category'],
                 'date_added' => $this->getCurrentDate(),
                 'username' => $this->inputs['username'],
@@ -28,14 +31,16 @@ class Profile extends Connection
     public function edit()
     {
         $primary_id = $this->inputs[$this->pk];
-        $user_fullname = $this->clean($this->inputs['user_fullname']);
         $username = $this->clean($this->inputs['username']);
         $is_exist = $this->select($this->table, $this->pk, "username = '$username' AND  $this->pk != '$primary_id'");
         if ($is_exist->num_rows > 0) {
             return 2;
         } else {
             $form = array(
-                'user_fullname' => $user_fullname,
+                'user_fname' => $this->inputs['user_fname'],
+                'user_mname' => $this->inputs['user_mname'],
+                'user_lname' => $this->inputs['user_lname'],
+                'contact_number' => $this->inputs['contact_number'],
                 'user_category' => $this->inputs['user_category'],
                 'username' => $username
             );
@@ -65,7 +70,7 @@ class Profile extends Connection
         $rows = array();
         $result = $this->select($this->table);
         while ($row = $result->fetch_assoc()) {
-            $row['category'] = ($row['user_category'] == "A" ? "Admin" : $row['user_category'] == "S" ? "Student" : "Teacher");
+            $row['category'] = $row['user_category'] == "A" ? "Admin" : "Faculty";
             $rows[] = $row;
         }
         return $rows;

@@ -115,6 +115,11 @@ if (!isset($_SESSION["trisakay_user_id"])) {
   <script type="text/javascript">
     var modal_detail_status = 0;
     $(document).ready(function() {
+        $(".select2").select2();
+
+        $(".select2").css({
+          "width": "100%"
+        });
     });
 
     function logout() {

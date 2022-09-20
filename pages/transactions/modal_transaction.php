@@ -19,7 +19,7 @@
                         <div class="col-sm-6">
                             <label><strong>Driver</strong></label>
                             <div>
-                            <select style="color:black" class="form-control input-item" name="input[driver_id]" id="driver_id" required>
+                            <select style="color:black" class="form-control input-item select2" name="input[driver_id]" id="driver_id" required>
                             </select>
                             </div>
                         </div>
