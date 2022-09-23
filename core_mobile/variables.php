@@ -31,4 +31,4 @@ define("database", "tri_sakay_db");
 /** Function / Classes **/
 
 //inside dir
-// define("VALUE", serialize(array("auth.php", "my_functions.php")));
+require_once "my_functions.php";
