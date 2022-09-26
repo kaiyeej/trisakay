@@ -25,7 +25,7 @@ function getRefNumTransaction()
 function getTransactionStatus($user_id, $driver_id)
 {
 	global $mysqli_connect;
-	$fetch = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND driver_id='$driver_id' AND STATUS = '1'");
+	$fetch = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND driver_id='$driver_id' AND STATUS = 'A'");
 	if ($fetch->num_rows > 0) {
 		$status = 1;
 	} else {
