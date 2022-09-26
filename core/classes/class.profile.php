@@ -41,7 +41,7 @@ class Profile extends Connection
                 'user_mname' => $this->inputs['user_mname'],
                 'user_lname' => $this->inputs['user_lname'],
                 'contact_number' => $this->inputs['contact_number'],
-                'user_category' => $this->inputs['user_category'],
+                'category' => $this->inputs['category'],
                 'username' => $username
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");

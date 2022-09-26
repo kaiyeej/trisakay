@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
     <li class="nav-item nav-profile">
-        <a href="./profile" class="nav-link">
+        <a href="./profile" class="nav-link" data-toggle="tooltip" title="View Profile">
         <div class="nav-profile-image">
             <img src="assets/images/face.png" alt="profile">
             <span class="login-status online"></span>
