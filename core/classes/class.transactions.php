@@ -15,7 +15,7 @@ class Transactions extends Connection
         } else {
             $form = array(
                 $this->name     => $this->clean($this->inputs[$this->name]),
-                'user_id'       => $this->inputs['user_id'],
+                //'user_id'       => $this->inputs['user_id'],
                 'driver_id'     => $this->inputs['driver_id'],
                 'remarks'       => $this->inputs['remarks'],
             );
