@@ -14,7 +14,8 @@ $response_array['array_data'] = array();
 $response = array();
 $fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND status = '0'");
 $row_trans = $fetch_trans->fetch_array();
-if (!empty($row_trans['status'])) {
+$count = $fetch_trans->num_rows;
+if ($count > 0) {
     $response["response"] = $row_trans['status'];
 } else {
     $response["response"] = -1;

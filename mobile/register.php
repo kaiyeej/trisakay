@@ -33,7 +33,7 @@ if (isset($username) && isset($password)) {
 		}
 	} else {
 		// user not in database
-		$response["res"] = 0;
+		$response["res"] = -2;
 	}
 }
 array_push($response_array['array_data'], $response);
