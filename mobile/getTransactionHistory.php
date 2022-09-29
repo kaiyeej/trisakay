@@ -16,9 +16,12 @@ $fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `sta
 
 while ($data = $fetch_users->fetch_array()) {
     $response = array();
+    $response['transaction_id'] = $data['transaction_id'];
     $response['driver_name'] = getUserName($data['driver_id']);
-    $response['amount'] = $data['amount'];
+    $response['amount'] = number_format($data['amount'], 2);
     $response['status'] = $data['status'];
+    $response['remarks'] = $data['remarks'];
+    $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     array_push($response_array['array_data'], $response);
 }
 
