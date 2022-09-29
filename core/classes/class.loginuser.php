@@ -12,7 +12,7 @@ class LoginUser extends Connection
         $username = $this->inputs['username'];
         $password = $this->inputs['password'];
 
-        $result = $this->select($this->table, "*", "username = '$username' AND password = md5('$password')");
+        $result = $this->select($this->table, "*", "username = '$username' AND password = md5('$password') AND category='A'");
         $row = $result->fetch_assoc();
 
         if ($row) {

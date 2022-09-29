@@ -18,9 +18,9 @@
 
 // online
 define("host", "localhost");
-define("username", "u981310152_trisakay_root");
-define("password", "triSakay123!");
-define("database", "u981310152_trisakay");
+define("username", "u981310152_trisakay_root1");
+define("password", "yuhn~vjZ3B:");
+define("database", "u981310152_trisakay_db");
 /** Auth **/
 
 // define("table", "tbl_users");
