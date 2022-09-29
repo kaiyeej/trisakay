@@ -33,3 +33,10 @@ function getTransactionStatus($user_id, $driver_id)
 	}
 	return $status;
 }
+function getUserName($id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$id'");
+	$data = $fetch->fetch_array();
+	return $data['user_fname'] . " " . $data['user_lname'];
+}
