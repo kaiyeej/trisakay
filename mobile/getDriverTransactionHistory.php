@@ -12,7 +12,7 @@ $user_id = $_REQUEST['user_id'];
 
 $response_array['array_data'] = array();
 
-$fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `status`='F' OR `status`='C' AND driver_id='$user_id'");
+$fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `driver_id`='$user_id' AND (STATUS != 'F' OR STATUS!='C')");
 
 while ($data = $fetch_users->fetch_array()) {
     $response = array();
