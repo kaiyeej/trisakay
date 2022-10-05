@@ -86,3 +86,10 @@ function sendNotif($user_id, $title, $body)
 	curl_close($ch);
 	return $response;
 }
+function getUserLocation($id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT latitude,longitude FROM tbl_users WHERE user_id='$id'");
+	$data = $fetch->fetch_array();
+	return $data;
+}
