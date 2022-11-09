@@ -12,7 +12,7 @@ $user_id = $_REQUEST['user_id'];
 $response_array['array_data'] = array();
 
 $response = array();
-$fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND status = '0'");
+$fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND status = 'S'");
 $row_trans = $fetch_trans->fetch_array();
 $count = $fetch_trans->num_rows;
 if ($count > 0) {

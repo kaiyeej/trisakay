@@ -9,16 +9,17 @@ require_once '../core_mobile/config.php';
 
 // //$data = json_decode(file_get_contents("php://input"));
 $user_id = $_REQUEST['user_id']; // session
+$driver_id = $_REQUEST['driver_id'];
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE transaction_id='8'");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE user_id='$user_id' AND driver_id='$driver_id'");
 while ($row = $fetch->fetch_array()) {
     $response = array();
     $response["transaction_id"] = $row['transaction_id'];
-    $response["start_point"] = $row['start_point'];
+    $response["starting_point"] = $row['starting_point'];
     $response["end_point"] = $row['end_point'];
-    // $response["status"] = getTransactionStatus($user_id, $row['user_id']);
-    $response["u_latitude"] = getUserLocation($row['user_id']);
-    $response["u_longitude"] = getUserLocation($row['user_id']);
+    $response["res"] = $driver_id;
+    // $response["u_latitude"] = getUserLocation($row['user_id'])['latitude'];
+    // $response["u_longitude"] = getUserLocation($row['user_id'])['longitude'];
 
 
     array_push($response_array['array_data'], $response);
