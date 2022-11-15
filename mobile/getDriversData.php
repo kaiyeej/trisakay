@@ -19,6 +19,7 @@ while ($row = $fetch->fetch_array()) {
 	$response['image'] = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU";
 	$response["latitude"] = $row['latitude'];
 	$response["longitude"] = $row['longitude'];
+	$response["session_id"] = $user_id;
 	$response["status"] = getTransactionStatus($user_id, $row['user_id']);
 
 

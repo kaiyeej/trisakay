@@ -17,7 +17,7 @@ $date = getCurrentDate();
 $num = date("mdyhis", strtotime($date));
 $transaction_num = 'TR-' . $num;
 $response = array();
-$fetch_trans = $mysqli_connect->query("SELECT COUNT(transaction_id) AS ctr FROM tbl_transactions WHERE user_id='$user_id' AND status = '0'");
+$fetch_trans = $mysqli_connect->query("SELECT COUNT(transaction_id) AS ctr FROM tbl_transactions WHERE user_id='$user_id' AND status = 'S'");
 $row_trans = $fetch_trans->fetch_array();
 if ($row_trans[0] == 0) {
     $result = $mysqli_connect->query("INSERT INTO `tbl_transactions` (`ref_number`, `user_id`, `driver_id`, `starting_point`, `end_point`,`status`,`date_added`) VALUES ('$transaction_num', '$user_id', '$driver_user_id', '$d_latitude', '$d_longitude','S','$date')");
