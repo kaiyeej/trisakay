@@ -94,3 +94,21 @@ function getUserLocation($id)
 	$data = $fetch->fetch_array();
 	return $data;
 }
+function checkDriverRating($transaction_id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT * FROM tbl_ratings WHERE transaction_id='$transaction_id'");
+	// $data = $fetch->fetch_array();
+	$count = $fetch->num_rows;
+
+	return $count;
+}
+
+function getRatingRemarks($transaction_id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT remarks FROM tbl_ratings WHERE transaction_id='$transaction_id'");
+	// $data = $fetch->fetch_array();
+	$data = $fetch->fetch_array();
+	return $data[0];
+}
