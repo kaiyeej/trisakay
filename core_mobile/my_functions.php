@@ -110,5 +110,23 @@ function getRatingRemarks($transaction_id)
 	$fetch = $mysqli_connect->query("SELECT remarks FROM tbl_ratings WHERE transaction_id='$transaction_id'");
 	// $data = $fetch->fetch_array();
 	$data = $fetch->fetch_array();
-	return $data[0];
+	if ($fetch->num_rows > 0) {
+		$result = $data[0];
+	} else {
+		$result = 0;
+	}
+	return $result;
+}
+function getRatingFunc($driver_id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT (SUM(r.rating) / COUNT(r.rating)) AS total_rating  FROM tbl_transactions AS tr, tbl_ratings AS r WHERE tr.driver_id='$driver_id' AND r.transaction_id=tr.transaction_id");
+	$data = $fetch->fetch_array();
+
+	if ($data['total_rating'] == "" || $data['total_rating'] == NULL) {
+		$result = 0;
+	} else {
+		$result = number_format($data['total_rating'], 1);
+	}
+	return $result;
 }

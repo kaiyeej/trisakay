@@ -21,6 +21,7 @@ while ($data = $fetch_users->fetch_array()) {
     $response['amount'] = number_format($data['amount'], 2);
     $response['status'] = $data['status'];
     $response['remarks'] = $data['remarks'];
+    $response['driver_id'] = $data['driver_id'];
     $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     $response['rating_status'] = checkDriverRating($data['transaction_id']);
     $response['rating_remarks'] = getRatingRemarks($data['transaction_id']);
