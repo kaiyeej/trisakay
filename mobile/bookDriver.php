@@ -24,6 +24,7 @@ if ($row_trans[0] == 0) {
 
     if ($result) {
         $response["response"] = 1;
+        sendNotif($driver_user_id, 'Attention!', 'New book received.');
     } else {
         $response["response"] = 0;
     }

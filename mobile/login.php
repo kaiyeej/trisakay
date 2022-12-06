@@ -15,7 +15,12 @@ $response_array['array_data'] = array();
 if (isset($username) && isset($password)) {
     $fetch_users = $mysqli_connect->query("SELECT count(user_id) as ctr, user_id,category FROM tbl_users where username='$username' AND password=md5('$password') AND category!='A'");
     $count_users = $fetch_users->fetch_array();
-    $result_id_token = $mysqli_connect->query("UPDATE `tbl_users` SET `id_token`='$id_token' WHERE `user_id`='$count_users[user_id]'");
+    if ($id_token == "" || $id_token == null) {
+        $result_id_token = false;
+    } else {
+        $result_id_token = $mysqli_connect->query("UPDATE `tbl_users` SET `id_token`='$id_token' WHERE `user_id`='$count_users[user_id]'");
+    }
+
     $response = array();
     if ($count_users['category'] == 'U') {
         $getUser = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$count_users[user_id]'");

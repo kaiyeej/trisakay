@@ -48,7 +48,7 @@ function sendNotif($user_id, $title, $body)
 
 	$url = 'https://fcm.googleapis.com/fcm/send';
 
-	$getToken = $mysqli_connect->query("SELECT idtoken FROM `tbl_users` WHERE `user_id` = '$user_id'");
+	$getToken = $mysqli_connect->query("SELECT id_token FROM `tbl_users` WHERE `user_id` = '$user_id'");
 	$idtoken = $getToken->fetch_array();
 
 	$tokens = array($idtoken[0], "");
@@ -70,7 +70,7 @@ function sendNotif($user_id, $title, $body)
 	//Setup headers:
 	$headers = array();
 	$headers[] = 'Content-Type: application/json';
-	$headers[] = 'Authorization: key=AIzaSyCKZCvZhkA_ZZz-axP6fPABrtdxv9syRX0'; // key here
+	$headers[] = 'Authorization: key=AAAAubbNF2A:APA91bG83EJ3MvwKZVr8MEfUuC-Fase7yq1KLZZx7uMD8Gz2Oe24MCISay1fb6ESYqrfWB0BdGsog78kS7Tls_YcExKjbOb7i_1vVprxDGhRpyqOBNIG6oXMJEgFr3lX5BsC8im7h4ss'; // key here
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
