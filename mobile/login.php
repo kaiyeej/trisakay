@@ -37,6 +37,8 @@ if ($count_users['category'] == 'U') {
     } else {
         $response["response"] = 0;
     }
+} else {
+    $response["response"] = 0;
 } //else if ($count_users['category'] == 'D') {
 //         $getUser = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$count_users[user_id]'");
 //         $data = $getUser->fetch_array();
