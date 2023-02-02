@@ -37,26 +37,24 @@ if ($count_users['category'] == 'U') {
     } else {
         $response["response"] = 0;
     }
-} else {
-    $response["response"] = 0;
-} //else if ($count_users['category'] == 'D') {
-//         $getUser = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$count_users[user_id]'");
-//         $data = $getUser->fetch_array();
+} else if ($count_users['category'] == 'D') {
+        $getUser = $mysqli_connect->query("SELECT * FROM tbl_users WHERE user_id='$count_users[user_id]'");
+        $data = $getUser->fetch_array();
 
-//         if ($result_id_token) {
-//             $response["user_fname"] = $data['user_fname'];
-//             $response["user_lname"] = $data['user_lname'];
-//             $response["contact_number"] = $data['contact_number'];
-//             $response["category"] = $data['category'];
-//             $response["username"] = $data['username'];
-//             $response["user_id"] = $data['user_id'];
-//             $response["response"] = 2;
-//         } else {
-//             $response["response"] = 0;
-//         }
-//     } else {
-//         $response["response"] = -1;
-//     }
-// }
+        if ($result_id_token) {
+            $response["user_fname"] = $data['user_fname'];
+            $response["user_lname"] = $data['user_lname'];
+            $response["contact_number"] = $data['contact_number'];
+            $response["category"] = $data['category'];
+            $response["username"] = $data['username'];
+            $response["user_id"] = $data['user_id'];
+            $response["response"] = 2;
+        } else {
+            $response["response"] = 0;
+        }
+    } else {
+        $response["response"] = -1;
+    }
+
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);

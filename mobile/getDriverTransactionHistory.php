@@ -17,6 +17,7 @@ $fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `dri
 while ($data = $fetch_users->fetch_array()) {
     $response = array();
     $response['transaction_id'] = $data['transaction_id'];
+    $response['driver_id'] = $data['driver_id'];
     $response['driver_name'] = getUserName($data['user_id']);
     $response['amount'] = number_format($data['amount'], 2);
     $response['status'] = $data['status'];

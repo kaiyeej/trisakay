@@ -1,40 +1,34 @@
 <?php
 require_once '../core_mobile/config.php';
-$url = 'https://fcm.googleapis.com/fcm/send';
+$ch = curl_init();
 
-$getToken = $mysqli_connect->query("SELECT id_token FROM `tbl_users` WHERE `user_id` = '11'");
-$idtoken = $getToken->fetch_array();
 
-$tokens = array($idtoken[0], "");
+$tokens = array("<DEVICE TOKEN>", "<DEVICE TOKEN>");
 
-// echo $idtoken[0];
 //Title of the Notification.
 $title = "Title";
 
 //Body of the Notification.
-$body = "Body";
+$body = "Test";
 
 //Creating the notification array.
-$notification = array('title' => $title, 'text' => $body);
+$notification = array('title' =>$title , 'text' => $body);
 
 //This array contains, the token and the notification. The 'to' attribute stores the token.
-$arrayToSend = array('registration_ids' => $tokens, 'notification' => $notification, 'priority' => 'high');
+$arrayToSend = array('registration_ids' => $tokens, 'notification' => $notification,'priority'=>'high');
 
 //Generating JSON encoded string form the above array.
 $json = json_encode($arrayToSend);
 //Setup headers:
 $headers = array();
 $headers[] = 'Content-Type: application/json';
-$headers[] = 'Authorization: key=AAAAubbNF2A:APA91bG83EJ3MvwKZVr8MEfUuC-Fase7yq1KLZZx7uMD8Gz2Oe24MCISay1fb6ESYqrfWB0BdGsog78kS7Tls_YcExKjbOb7i_1vVprxDGhRpyqOBNIG6oXMJEgFr3lX5BsC8im7h4ss'; // key here
+$headers[] = 'Authorization: key= <API_KEY>'; // key here
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
+//Setup curl, add headers and post parameters.
+curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+curl_setopt( $ch,CURLOPT_POST, true );
+curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
 //Send the request
 $response = curl_exec($ch);
 

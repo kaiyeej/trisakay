@@ -143,7 +143,9 @@
                       return "<strong style='color:red;'>Cancel</strong>";
                     }else if(row.status == "A"){
                       return "<strong style='color:#3f51b5;'>On-the-way</strong>";
-                    }else{
+                    }else if(row.status == "S"){
+                      return "<strong style='color:#f400ff;'>Booked</strong>";
+                    }{
                       return "<strong style='color:green;'>Finished</strong>";
                     }
                       

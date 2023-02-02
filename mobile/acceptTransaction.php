@@ -9,16 +9,27 @@ require_once '../core_mobile/config.php';
 
 // //$data = json_decode(file_get_contents("php://input"));
 $transaction_id = $_REQUEST['transaction_id'];
+$driver_id = $_REQUEST['driver_id'];
 
 $response_array['array_data'] = array();
+$fetch1 = $mysqli_connect->query("SELECT count(status) as `counter` FROM tbl_transactions WHERE driver_id='$driver_id' AND status='A'");
+$data1= $fetch1->fetch_array();
+if($data1['counter'] != 1){
+    $result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `status`='A' WHERE `transaction_id`='$transaction_id'");
 
-$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `status`='A' WHERE  `transaction_id`='$transaction_id'");
-
-if ($result) {
-    $response["res"] = 1;
-} else {
-    $response["res"] = 0;
+    if ($result) {
+        $fetch = $mysqli_connect->query("SELECT user_id FROM tbl_transactions WHERE transaction_id='$transaction_id'");
+    $data = $fetch->fetch_array();
+        sendNotif($data[0], 'Awesome!', 'Your driver accepted your book.');
+        
+        $response["res"] = 1;
+    } else {
+        $response["res"] = 0;
+    }
+}else{
+    $response["res"] = $data1['counter'].'fdsfsf';
 }
+
 
 
 
