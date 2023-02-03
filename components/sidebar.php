@@ -21,6 +21,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="./fare-matrix">
+        <span class="menu-title">Fare Matrix</span>
+        <i class="mdi mdi-matrix menu-icon"></i>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="./transactions">
         <span class="menu-title">Transactions</span>
         <i class="mdi mdi-file-multiple menu-icon"></i>

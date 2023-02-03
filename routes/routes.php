@@ -21,6 +21,10 @@ $routes = array(
         'class_name' => 'Profile',
         'has_detail' => 0
     ),
+    "fare-matrix" => array(
+        'class_name' => 'FareMatrix',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
