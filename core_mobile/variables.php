@@ -21,6 +21,7 @@ define("database", "u981310152_trisakay_db");
 
 /** Auth **/
 
+
 // define("table", "tbl_users");
 // define("user_session_id", "user_id");
 // define("passwordHashing", true);
