@@ -140,7 +140,9 @@
                     if(row.status == "P"){
                       return "<strong style='color:#ff9800;'>Pending</strong>";
                     }else if(row.status == "C"){
-                      return "<strong style='color:red;'>Cancel</strong>";
+                      return "<strong style='color:red;'>Canceled</strong>";
+                    }else if(row.status == "R"){
+                      return "<strong style='color:red;'>Rejected</strong>";
                     }else if(row.status == "A"){
                       return "<strong style='color:#3f51b5;'>On-the-way</strong>";
                     }else if(row.status == "S"){
