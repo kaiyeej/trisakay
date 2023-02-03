@@ -9,26 +9,16 @@
 // offline
 
 
-define("host", "localhost");
-define("username", "root");
-define("password", "");
-define("database", "tri_sakay_db");
-
-<<<<<<< Updated upstream
-
-
-// online
 // define("host", "localhost");
-// define("username", "u981310152_trisakay_root1");
-// define("password", "yuhn~vjZ3B:");
-// define("database", "u981310152_trisakay_db");
-=======
+// define("username", "root");
+// define("password", "");
+// define("database", "tri_sakay_db");
+
 define("host", "localhost");
 define("username", "u981310152_trisakay_root1");
 define("password", "I7$11ejb");
 define("database", "u981310152_trisakay_db");
 
->>>>>>> Stashed changes
 /** Auth **/
 
 // define("table", "tbl_users");
