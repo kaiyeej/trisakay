@@ -10,6 +10,12 @@ define("PASSWORD", "");
 define("DBNAME", "tri_sakay_db");
 
 // define("HOST", "localhost");
+<<<<<<< Updated upstream
 // define("USER", "u981310152_trisakay_root");
 // define("PASSWORD", "triSakay123!");
 // define("DBNAME", "u981310152_trisakay");
+=======
+// define("USER", "u981310152_trisakay_root1");
+// define("PASSWORD", "I7$11ejb");
+// define("DBNAME", "u981310152_trisakay_db");
+>>>>>>> Stashed changes
