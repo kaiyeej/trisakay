@@ -21,7 +21,7 @@ class Users extends Connection
                 'category' => $this->inputs['category'],
                 'date_added' => $this->getCurrentDate(),
                 'username' => $this->inputs['username'],
-                'password' => md5('$pass')
+                'password' => md5($pass)
             );
             return $this->insert($this->table, $form);
         }
