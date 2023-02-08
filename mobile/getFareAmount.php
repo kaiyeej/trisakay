@@ -8,19 +8,23 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once '../core_mobile/config.php';
 
 // //$data = json_decode(file_get_contents("php://input"));
-$user_id = $_REQUEST['user_id'];
-$driver_user_id = $_REQUEST['driver_user_id'];
-$fare_amount = $_REQUEST['fare_amount'];
+$distance = $_REQUEST['distance'] * 1000; // session
 $response_array['array_data'] = array();
-
+$fetch = $mysqli_connect->query("SELECT fare_amount, count(fare_matrix_id) as counter FROM tbl_fare_matrix WHERE start_distance <= '$distance' AND end_distance >='$distance'");
+$row = $fetch->fetch_array();
 $response = array();
-$fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE driver_id='$driver_user_id' AND user_id='$user_id' AND status != 'F' ORDER BY date_added DESC");
-$row_trans = $fetch_trans->fetch_array();
-$response["response"] = $row_trans['status'];
-if ($row_trans['status'] == 'S') {
-    $mysqli_connect->query("UPDATE `tbl_transactions` SET `amount`='$fare_amount' WHERE `transaction_id`='$row_trans[transaction_id]'");
+if ($row['counter'] > 0) {
+    $response["fare_amount"] = $row['fare_amount'];
+} else {
+    $response["fare_amount"] = 0.00;
 }
 
 
+
+
+
 array_push($response_array['array_data'], $response);
+
+
+
 echo json_encode($response_array);

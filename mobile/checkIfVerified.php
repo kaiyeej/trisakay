@@ -9,18 +9,12 @@ require_once '../core_mobile/config.php';
 
 // //$data = json_decode(file_get_contents("php://input"));
 $user_id = $_REQUEST['user_id'];
-$driver_user_id = $_REQUEST['driver_user_id'];
-$fare_amount = $_REQUEST['fare_amount'];
+
 $response_array['array_data'] = array();
 
 $response = array();
-$fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE driver_id='$driver_user_id' AND user_id='$user_id' AND status != 'F' ORDER BY date_added DESC");
+$fetch_trans = $mysqli_connect->query("SELECT status FROM tbl_users WHERE user_id='$user_id'");
 $row_trans = $fetch_trans->fetch_array();
 $response["response"] = $row_trans['status'];
-if ($row_trans['status'] == 'S') {
-    $mysqli_connect->query("UPDATE `tbl_transactions` SET `amount`='$fare_amount' WHERE `transaction_id`='$row_trans[transaction_id]'");
-}
-
-
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);

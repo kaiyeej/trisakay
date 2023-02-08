@@ -13,7 +13,7 @@ $response_array['array_data'] = array();
 $fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE category='D' AND latitude != 0 AND longitude != 0 AND `status`='0'");
 while ($row = $fetch->fetch_array()) {
 	$response = array();
-	$distance = getDistance($row['latitude'],  $row['longitude'], getUserLocation($user_id)['latitude'], getUserLocation($user_id)['longitude'], 0.250);
+	$distance = getDistance($row['latitude'],  $row['longitude'], getUserLocation($user_id)['latitude'], getUserLocation($user_id)['longitude'], 1000);
 	$response["user_id"] = $row['user_id'];
 	$response['fullname'] = $row['user_fname'] . " " . $row['user_lname'];
 	$response["ratings"] = getRatingFunc($row['user_id']);
