@@ -16,7 +16,7 @@
 
 define("host", "localhost");
 define("username", "u981310152_trisakay_root1");
-define("password", "I7$11ejb");
+define("password", "iF*btk[8s2D|");
 define("database", "u981310152_trisakay_db");
 
 /** Auth **/
