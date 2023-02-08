@@ -10,6 +10,6 @@ define("BASE_PATH", __DIR__ . "/../");
 // define("DBNAME", "tri_sakay_db");
 
 define("HOST", "localhost");
-define("USER", "u981310152_trisakay_root");
-define("PASSWORD", "triSakay123!");
-define("DBNAME", "u981310152_trisakay");
+define("USER", "u981310152_trisakay_root1");
+define("PASSWORD", "iF*btk[8s2D|");
+define("DBNAME", "u981310152_trisakay_db");
