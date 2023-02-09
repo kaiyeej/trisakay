@@ -46,7 +46,7 @@ class Users extends Connection
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }
     }
-    
+
     public function block()
     {
         $ids = implode(",", $this->inputs['ids']);
@@ -71,8 +71,8 @@ class Users extends Connection
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
             $row['driver_id'] = $row['user_id'];
-            $row['user_fullname'] = $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
-            $row['category'] = $row['category'] == "A" ? "Admin" :  ($row['category'] == "U" ? "User" : "Driver");
+            $row['user_fullname'] = $row['user_fname'] . " " . $row['user_mname'] . " " . $row['user_lname'];
+            $row['category'] = $row['category'] == "A" ? '<span class="badge badge-pill badge-info">ADMIN</span>' : ($row['category'] == "U" ? '<span class="badge badge-pill badge-success">USER</span>' : '<span class="badge badge-pill badge-warning">DRIVER</span>');
             $rows[] = $row;
         }
         return $rows;
@@ -83,7 +83,7 @@ class Users extends Connection
         $primary_id = $this->inputs['id'];
         $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        $row['user_fullname'] = $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
+        $row['user_fullname'] = $row['user_fname'] . " " . $row['user_mname'] . " " . $row['user_lname'];
         return $row;
     }
 
@@ -100,6 +100,6 @@ class Users extends Connection
         $self = new self;
         $result = $self->select($self->table, "*", "$self->pk  = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['user_fname']." ".$row['user_mname']." ".$row['user_lname'];
+        return $row['user_fname'] . " " . $row['user_mname'] . " " . $row['user_lname'];
     }
 }

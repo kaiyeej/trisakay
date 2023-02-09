@@ -90,7 +90,7 @@
           "mRender": function(data, type, row) {
 
             if (row.status == 1) {
-              return '<i style="font-size: 20px; color: #198ae3;" class="mdi mdi-check-circle">';
+              return '<span>Verified </span><i style="font-size: 20px; color: #198ae3;" class="mdi mdi-check-circle">';
             } else {
               return '<i style="font-size: 20px; color: #fe7c96;" class="mdi mdi-close-circle">';
             }
