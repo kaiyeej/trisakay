@@ -41,11 +41,26 @@ class Transactions extends Connection
         $rows = array();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
+            $review = $this->ratings($row['transaction_id']);
+
             $row['driver'] = $Users->getUser($row['driver_id']);
             $row['user'] = $Users->getUser($row['user_id']);
+            $row['rating'] = $review[0] > 0 ?  $review[0]."/5" : "---";
+            $row['remarks'] = $review[1];
             $rows[] = $row;
         }
         return $rows;
+    }
+
+    public function ratings($id){
+        $result = $this->select("tbl_ratings", "rating,remarks", "$this->pk = '$id'");
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            return [$row['rating'],$row['remarks']];
+        }else{
+            return [0,""];
+        }
+        
     }
 
     public function view()

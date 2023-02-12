@@ -16,6 +16,7 @@
       </ol>
     </nav>
   </div>
+  
   <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
@@ -25,12 +26,13 @@
             <table id="dt_entries" class="table table-bordered">
               <thead>
                 <tr>
-                    <th><input type='checkbox' onchange="checkAll(this, 'dt_id')"></th>
                     <th></th>
                     <th>Reference #</th>
                     <th>User</th>
                     <th>Driver</th>
                     <th>Amount</th>
+                    <th>Remarks</th>
+                    <th>Rating</th>
                     <th>Status</th>
                     <th>Date Added</th>
                     <th>Date Modified</th>
@@ -47,57 +49,7 @@
 </div>
 <?php require_once 'modal_transaction.php'; ?>
 <script type="text/javascript">
-    function cancelEntry() {
-      var count_checked = $("input[class='dt_id']:checked").length;
-
-      if (count_checked > 0) {
-        swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover these entries!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Yes, cancel it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-          },
-          function(isConfirm) {
-            if (isConfirm) {
-              var checkedValues = $("input[class='dt_id']:checked").map(function() {
-                return this.value;
-              }).get();
-
-              $.ajax({
-                type: "POST",
-                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=cancel",
-                data: {
-                  input: {
-                    ids: checkedValues
-                  }
-                },
-                success: function(data) {
-                  getEntries();
-                  var json = JSON.parse(data);
-                  console.log(json);
-                  if (json.data == 1) {
-                    success_cancel();
-                  } else {
-                    failed_query(json);
-                  }
-                }
-              });
-
-              $("#btn_delete").prop('disabled', true);
-
-            } else {
-              swal("Cancelled", "Entries are safe :)", "error");
-            }
-          });
-      } else {
-        swal("Cannot proceed!", "Please select entries to delete!", "warning");
-      }
-    }
+    
 
     function getUserDetails(id){
         $("#div_password").hide();
@@ -112,11 +64,7 @@
                 "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show",
                 "dataSrc": "data"
             },
-            "columns": [{
-                    "mRender": function(data, type, row) {
-                        return "<input type='checkbox' value=" + row.transaction_id + " class='dt_id' style='position: initial; opacity:1;'>";
-                    }
-                },
+            "columns": [
                 {
                     "mRender": function(data, type, row) {
                       return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.transaction_id + ")'><span class='mdi mdi-file-document'></span></button></center>";
@@ -133,6 +81,12 @@
                 },
                 {
                     "data": "amount"
+                },
+                {
+                    "data": "remarks"
+                },
+                {
+                    "data": "rating"
                 },
                 {
                   "mRender": function(data, type, row) {

@@ -21,6 +21,7 @@ class Users extends Connection
                 'category' => $this->inputs['category'],
                 'date_added' => $this->getCurrentDate(),
                 'username' => $this->inputs['username'],
+                'status' => $this->inputs['status'],
                 'password' => md5($pass)
             );
             return $this->insert($this->table, $form);
@@ -41,6 +42,7 @@ class Users extends Connection
                 'user_mname' => $this->inputs['user_mname'],
                 'user_lname' => $this->inputs['user_lname'],
                 'category' => $this->inputs['category'],
+                'status' => $this->inputs['status'],
                 'username' => $username
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");

@@ -39,13 +39,13 @@
                   <input type="hidden" autocomplete="off" value="<?= $_SESSION['trisakay_user_id'] ?>" name="input[user_id]" class="form-control" id="hidden_id">
                   <div class="form-group col-sm-6">
                     <label for="exampleInputEmail1">Category</label>
-                    <select class="form-control input-item" name="input[category]" id="category" required>
+                    <select class="form-control input-item" name="input[category]" style="height:45px;" id="category" required>
                         <option value="">&mdash; Please Select &mdash;</option>
                         <option value="A">Admin</option>
                         <option value="D">Driver</option>
                     </select>
                   </div>
-                  <div class="form-group col-sm-12">
+                  <div class="form-group col-sm-6" style="padding-top: 20px;">
                     <button type="submit" style="float: right;" id="btn_submit" class="btn btn-primary me-2">Save</button>
                   </div>
                 </div>

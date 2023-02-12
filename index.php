@@ -348,6 +348,18 @@ if (!isset($_SESSION["trisakay_user_id"])) {
       }
     }
 
+    
+    function print_report(container) {
+      var printContents = document.getElementById(container).innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+
+      document.body.innerHTML = originalContents;
+
+      location.reload();
+    }
+
     // MODULE WITH DETAILS LIKE SALES
 
     function getEntryDetails2(id) {
