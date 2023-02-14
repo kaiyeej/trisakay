@@ -13,19 +13,29 @@ $user_mname = $_REQUEST['mname'];
 $user_lname = $_REQUEST['lname'];
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
+$name = $_FILES['file']['name'];
+$type = $_FILES['file']['type'];
+$size = $_FILES['file']['size'];
 $response_array['array_data'] = array();
 
 
-if($password == ""){
+if ($password == "") {
     $password_query = "";
-}else{
+} else {
     $password_query = ",`password`=md5('$password')";
 }
+$img_name = $name . '.jpg';
+$directory = "../assets/uploads/" . $name . '.jpg';
+$result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username',`user_img`='$img_name' $password_query  WHERE `user_id`='$user_id'");
 
-$result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username' $password_query  WHERE `user_id`='$user_id'");
+if ($result) {
 
-if ($result) {    
-    $response["res"] = 1;
+
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
+        $response["res"] =  $mysqli_connect->insert_id;
+    } else {
+        $response["res"] = 0;
+    }
 } else {
     $response["res"] = 0;
 }
