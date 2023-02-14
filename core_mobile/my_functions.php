@@ -70,7 +70,7 @@ function sendNotif($user_id, $title, $body)
 	//Setup headers:
 	$headers = array();
 	$headers[] = 'Content-Type: application/json';
-	$headers[] = 'Authorization: key=BGHAZhtKEWB-tDFlW0ge7mIoVakrkCbMiCj1SIZ6ilx7iYUMdRcjEpUytsvfvGUoWzGWl_PQxLX5upII8nvrgAA'; // key here
+	$headers[] = 'Authorization: key=AAAA5k62154:APA91bGsCAKPNCh3Oq_xg7ZyaSp1hZiNqlGYvlrkEju2p-Wq0X_E4OZ6gTPftcKIjrpN8j-40xQlqYSOsJiGKh5UMFZs9CNGTKf_xtGlHKei62Ji4tiumRv7Trp3HvH3pWHQVB-KOYQq'; // key here
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
