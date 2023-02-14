@@ -33,6 +33,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="./history-report">
+        <span class="menu-title">Report</span>
+        <i class="mdi mdi-chart-bar-stacked menu-icon"></i>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="./users">
         <span class="menu-title">Users</span>
         <i class="mdi mdi-account-multiple-plus menu-icon"></i>

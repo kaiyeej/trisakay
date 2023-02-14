@@ -9,16 +9,18 @@
 // offline
 
 
-define("host", "localhost");
-define("username", "root");
-define("password", "");
-define("database", "tri_sakay_db");
-
 // define("host", "localhost");
-// define("username", "u981310152_trisakay_root1");
-// define("password", "iF*btk[8s2D|");
-// define("database", "u981310152_trisakay_db");
+// define("username", "root");
+// define("password", "");
+// define("database", "tri_sakay_db");
 
+
+
+// online
+define("host", "localhost");
+define("username", "u981310152_trisakay_root1");
+define("password", "iF*btk[8s2D|");
+define("database", "u981310152_trisakay_db");
 /** Auth **/
 
 

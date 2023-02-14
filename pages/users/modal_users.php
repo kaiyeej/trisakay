@@ -35,7 +35,7 @@
                         <div class="col">
                             <label><strong>Category</strong></label>
                             <div>
-                            <select class="form-control input-item" name="input[category]" id="category" required>
+                            <select class="form-control input-item" name="input[category]" id="category" style="height:45px;" required>
                                 <option value="">&mdash; Please Select &mdash;</option>
                                 <option value="A">Admin</option>
                                 <option value="D">Driver</option>
@@ -49,6 +49,18 @@
                             <label><strong>Username</strong></label>
                             <div>
                             <input type="text" class="form-control input-item" name="input[username]" autocomplete="off" id="username" placeholder="Username" maxlength=15 required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <label><strong>Status</strong></label>
+                            <div>
+                            <select class="form-control input-item" name="input[status]" id="status" style="height:45px;" required>
+                                <option value="1">Enabled</option>
+                                <option value="-1">Disabled</option>
+                                <option value="0">Pending</option>
+                            </select>
                             </div>
                         </div>
                     </div>
