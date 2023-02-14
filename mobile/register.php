@@ -15,6 +15,9 @@ $contactNumber = $_REQUEST['contactNumber'];
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
 $date = getCurrentDate();
+$name = $_FILES['file']['name'];
+$type = $_FILES['file']['type'];
+$size = $_FILES['file']['size'];
 $response_array['array_data'] = array();
 if (isset($username) && isset($password)) {
 
@@ -23,11 +26,16 @@ if (isset($username) && isset($password)) {
 	$row = $fetch_rows->fetch_array();
 
 	if ($row['counter'] == 0) {
-
-		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`) VALUES ('$fname','$mname','$lname','$address','$contactNumber','U','$username',md5('$password'),'$date')");
+		$img_name = $name . '.jpg';
+		$directory = "../assets/uploads/" . $name . '.jpg';
+		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`,`user_img`) VALUES ('$fname','$mname','$lname','$address','$contactNumber','U','$username',md5('$password'),'$date','$img_name')");
 
 		if ($sql) {
-			$response["res"] =  $mysqli_connect->insert_id;
+			if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
+				$response["res"] =  $mysqli_connect->insert_id;
+			} else {
+				$response["res"] = 0;
+			}
 		} else {
 			$response["res"] = 0;
 		}
