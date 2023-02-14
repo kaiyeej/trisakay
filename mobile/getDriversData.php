@@ -10,7 +10,7 @@ require_once '../core_mobile/config.php';
 // //$data = json_decode(file_get_contents("php://input"));
 $user_id = $_REQUEST['user_id']; // session
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE category='D' AND latitude != 0 AND longitude != 0 AND `status`='0'");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE category='D' AND latitude != 0 AND longitude != 0 AND `status`='1'");
 while ($row = $fetch->fetch_array()) {
 	$response = array();
 	$distance = getDistance($row['latitude'],  $row['longitude'], getUserLocation($user_id)['latitude'], getUserLocation($user_id)['longitude'], 1000);

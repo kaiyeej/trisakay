@@ -30,9 +30,8 @@ $result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fna
 
 if ($result) {
 
-
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
-        $response["res"] =  $mysqli_connect->insert_id;
+        $response["res"] = 1;
     } else {
         $response["res"] = 0;
     }
