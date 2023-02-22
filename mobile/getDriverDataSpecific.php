@@ -11,7 +11,7 @@ require_once '../core_mobile/config.php';
 $user_id = $_REQUEST['user_id']; // session
 $driver_user_id = $_REQUEST['driver_user_id'];
 $response_array['array_data'] = array();
-$fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE category='D' AND latitude != 0 AND longitude != 0 AND `status`='0' and user_id='$driver_user_id'");
+$fetch = $mysqli_connect->query("SELECT * FROM tbl_users WHERE category='D' AND latitude != 0 AND longitude != 0 AND `status`='1' and user_id='$driver_user_id'");
 while ($row = $fetch->fetch_array()) {
 	$response = array();
 	$response["user_id"] = $row['user_id'];

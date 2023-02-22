@@ -7,17 +7,21 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once '../core_mobile/config.php';
 
-// //$data = json_decode(file_get_contents("php://input"));
-$user_id = $_REQUEST['user_id'];
-$driver_user_id = $_REQUEST['driver_user_id'];
+
+$user_id = $_REQUEST['user_id']; // session
+$driver_id = $_REQUEST['driver_user_id'];
 $fare_amount = $_REQUEST['fare_amount'];
 $response_array['array_data'] = array();
 
-$response = array();
-$fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE driver_id='$driver_user_id' AND user_id='$user_id' AND status != 'F' ORDER BY date_added DESC");
-$row_trans = $fetch_trans->fetch_array();
-$response["response"] = $row_trans['status'];
 
+
+$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `amount`='$fare_amount' WHERE user_id='$user_id' AND driver_id='$driver_id' AND STATUS='S'");
+
+if ($result) {
+    $response['response'] = 1;
+} else {
+    $response['response'] = 0;
+}
 
 
 array_push($response_array['array_data'], $response);
