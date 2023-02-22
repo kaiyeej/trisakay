@@ -50,7 +50,7 @@ if ($count_users['category'] == 'U') {
         $response["category"] = $data['category'];
         $response["username"] = $data['username'];
         $response["user_id"] = $data['user_id'];
-        $response["response"] = 2;
+        $response["response"] = 1;
     } else {
         $response["response"] = 0;
     }

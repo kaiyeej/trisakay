@@ -10,7 +10,6 @@ require_once '../core_mobile/config.php';
 // //$data = json_decode(file_get_contents("php://input"));
 $user_id = $_REQUEST['user_id'];
 $driver_user_id = $_REQUEST['driver_user_id'];
-$fare_amount = $_REQUEST['fare_amount'];
 $response_array['array_data'] = array();
 
 $response = array();
