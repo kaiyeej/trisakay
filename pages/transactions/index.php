@@ -1,17 +1,17 @@
 <div class="content-wrapper">
   <div class="page-header">
-    <h3 class="page-title"> Users </h3>
+    <h3 class="page-title"> Transactions </h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <button class="btn btn-warning btn-sm" onclick='cancelEntry()' id='btn_delete'>
               <i style="font-size: 20px;" class="mdi mdi-close-circle"></i>
             </button>
             <button class="btn btn-danger btn-sm" onclick='deleteEntry()' id='btn_delete'>
               <i style="font-size: 20px;" class="mdi mdi-delete"></i>
             </button>
-          </div>
+          </div> -->
         </li>
       </ol>
     </nav>

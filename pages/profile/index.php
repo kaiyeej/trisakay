@@ -45,7 +45,7 @@
                         <option value="D">Driver</option>
                     </select>
                   </div>
-                  <div class="form-group col-sm-6" style="padding-top: 20px;">
+                  <div class="form-group col-sm-12" style="padding-top: 20px;">
                     <button type="submit" style="float: right;" id="btn_submit" class="btn btn-primary me-2">Save</button>
                   </div>
                 </div>
