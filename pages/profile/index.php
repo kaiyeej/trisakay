@@ -37,7 +37,7 @@
                     <input type="text" autocomplete="off" class="form-control input-item" id="username" name="input[username]" placeholder="Username">
                   </div>
                   <input type="hidden" autocomplete="off" value="<?= $_SESSION['trisakay_user_id'] ?>" name="input[user_id]" class="form-control" id="hidden_id">
-                  <div class="form-group col-sm-6">
+                  <div class="form-group col-sm-6" style="display:none;">
                     <label for="exampleInputEmail1">Category</label>
                     <select class="form-control input-item" name="input[category]" style="height:45px;" id="category" required>
                         <option value="">&mdash; Please Select &mdash;</option>
