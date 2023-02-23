@@ -35,6 +35,7 @@ if ($count_users['category'] == 'U') {
         $response["category"] = $data['category'];
         $response["username"] = $data['username'];
         $response["user_id"] = $data['user_id'];
+        $response["user_img"] = $data['user_img'];
         $response["response"] = 1;
     } else {
         $response["response"] = 0;
@@ -50,6 +51,7 @@ if ($count_users['category'] == 'U') {
         $response["category"] = $data['category'];
         $response["username"] = $data['username'];
         $response["user_id"] = $data['user_id'];
+        $response["user_img"] = $data['user_img'];
         $response["response"] = 1;
     } else {
         $response["response"] = 0;
