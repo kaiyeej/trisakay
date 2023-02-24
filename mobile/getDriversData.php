@@ -17,7 +17,7 @@ while ($row = $fetch->fetch_array()) {
 	$response["user_id"] = $row['user_id'];
 	$response['fullname'] = $row['user_fname'] . " " . $row['user_lname'];
 	$response["ratings"] = getRatingFunc($row['user_id']);
-	$response['image'] = $row['user_img'];
+	$response['image'] = $row['user_img'] == "" ? 'profile.jpg' : $row['user_img'];
 	$response["latitude"] = $row['latitude'];
 	$response["longitude"] = $row['longitude'];
 	$response["session_id"] = $user_id;

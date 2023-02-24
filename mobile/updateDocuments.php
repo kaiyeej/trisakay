@@ -18,8 +18,8 @@ $franchise_type = $_FILES['franchise']['type'];
 $response_array['array_data'] = array();
 
 
-$toda_img_name = $toda_name . '.jpg';
-$franchise_img_name = $franchise_name . '.jpg';
+$toda_img_name = $toda_name;
+$franchise_img_name = $franchise_name;
 $toda_directory = "../assets/upload_documents/" . $toda_img_name;
 $franchise_directory = "../assets/upload_documents/" . $franchise_img_name;
 $result = $mysqli_connect->query("UPDATE `tbl_users` SET `license_number`='$license_number',`toda_id`='$toda_img_name',`franchise_permit`='$franchise_img_name' WHERE `user_id`='$user_id'");

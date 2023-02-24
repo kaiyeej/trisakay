@@ -12,12 +12,13 @@ $user_id = $_REQUEST['user_id'];
 
 $response_array['array_data'] = array();
 
-$fetch_users = $mysqli_connect->query("SELECT user_fname, user_mname, user_lname FROM tbl_users WHERE user_id='$user_id'");
+$fetch_users = $mysqli_connect->query("SELECT user_fname, user_mname, user_lname, user_img FROM tbl_users WHERE user_id='$user_id'");
 $data = $fetch_users->fetch_array();
 
 $response = array();
 
 $response["fullname"] = $data['user_fname'] . " " . $data['user_lname'];
+$response['image'] = $data['user_img'] == "" ? 'profile.jpg' : $data['user_img'];
 $response["user_rating"] = getRatingFunc($user_id);
 
 array_push($response_array['array_data'], $response);

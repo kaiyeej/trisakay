@@ -26,7 +26,7 @@ if (isset($username) && isset($password)) {
 	$row = $fetch_rows->fetch_array();
 
 	if ($row['counter'] == 0) {
-		$img_name = $name . '.jpg';
+		$img_name = $name;
 		$directory = "../assets/uploads/" . $name;
 		$sql = $mysqli_connect->query("INSERT INTO tbl_users (`user_fname`, `user_mname`, `user_lname`, `address`, `contact_number`, `category`, `username`, `password`, `date_added`,`user_img`) VALUES ('$fname','$mname','$lname','$address','$contactNumber','U','$username',md5('$password'),'$date','$img_name')");
 
