@@ -25,7 +25,7 @@ if ($password == "") {
     $password_query = ",`password`=md5('$password')";
 }
 $img_name = $name . '.jpg';
-$directory = "../assets/uploads/" . $name . '.jpg';
+$directory = "../assets/uploads/" . $name;
 $result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username',`user_img`='$img_name' $password_query  WHERE `user_id`='$user_id'");
 
 if ($result) {
