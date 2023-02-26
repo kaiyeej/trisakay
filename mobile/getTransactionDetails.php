@@ -22,10 +22,10 @@ $fetch_trans = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE tran
 // }
 
 while ($row = $fetch_trans->fetch_array()) {
-	$response = array();
-	
-	$response["transaction_id"] = $row['transaction_id'];
-	$response["ref_number"] = $row['ref_number'];
+    $response = array();
+    $ex = explode('.', $row['total_distance']);
+    $response["transaction_id"] = $row['transaction_id'];
+    $response["ref_number"] = $row['ref_number'];
     $response["user_id"] = $row['user_id'];
     $response["user_fullname"] = getUserName($row['user_id']);
     $response["driver_id"] = $row['driver_id'];
@@ -35,7 +35,10 @@ while ($row = $fetch_trans->fetch_array()) {
     $response["status"] = $row['status'];
     $response["remarks"] = $row['remarks'];
     $response["date_added"] = $row['date_added'];
-	array_push($response_array['array_data'], $response);
+    $response["image"] = getUserImage($row['user_id']);
+    $response["distance"] = $ex[0] . $ex[1];
+    $response["fuel"] = $row['fuel_consumption'];
+    array_push($response_array['array_data'], $response);
 }
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);

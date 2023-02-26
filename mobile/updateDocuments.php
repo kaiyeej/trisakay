@@ -15,18 +15,28 @@ $toda_type = $_FILES['toda']['type'];
 
 $franchise_name = $_FILES['franchise']['name'];
 $franchise_type = $_FILES['franchise']['type'];
+
+$or_name = $_FILES['or']['name'];
+$or_type = $_FILES['or']['type'];
+
+$cr_name = $_FILES['cr']['name'];
+$cr_type = $_FILES['cr']['type'];
 $response_array['array_data'] = array();
 
 
 $toda_img_name = $toda_name;
 $franchise_img_name = $franchise_name;
+$or_img_name = $or_name;
+$cr_img_name = $cr_name;
 $toda_directory = "../assets/upload_documents/" . $toda_img_name;
 $franchise_directory = "../assets/upload_documents/" . $franchise_img_name;
-$result = $mysqli_connect->query("UPDATE `tbl_users` SET `license_number`='$license_number',`toda_id`='$toda_img_name',`franchise_permit`='$franchise_img_name' WHERE `user_id`='$user_id'");
+$or_directory = "../assets/upload_documents/" . $or_img_name;
+$cr_directory = "../assets/upload_documents/" . $cr_img_name;
+$result = $mysqli_connect->query("UPDATE `tbl_users` SET `license_number`='$license_number',`toda_id`='$toda_img_name',`franchise_permit`='$franchise_img_name',`or_img`='$or_img_name ',`cr_img`='$cr_img_name' WHERE `user_id`='$user_id'");
 
 if ($result) {
 
-    if (move_uploaded_file($_FILES["toda"]["tmp_name"], $toda_directory) && move_uploaded_file($_FILES["franchise"]["tmp_name"], $franchise_directory)) {
+    if (move_uploaded_file($_FILES["toda"]["tmp_name"], $toda_directory) && move_uploaded_file($_FILES["franchise"]["tmp_name"], $franchise_directory) && move_uploaded_file($_FILES["or"]["tmp_name"], $or_directory) && move_uploaded_file($_FILES["cr"]["tmp_name"], $cr_directory)) {
         $response["res"] = 1;
     } else {
         $response["res"] = 0;

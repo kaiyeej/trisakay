@@ -150,3 +150,15 @@ function getDistance($gpsLat, $gpsLong, $userLat, $userLong, $userRadius)
 
 	return $isInsideRadius;
 }
+function getUserImage($id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT user_img FROM tbl_users WHERE user_id='$id'");
+	$data = $fetch->fetch_array();
+	if ($data[0] == "") {
+		$image = 'profile.jpg';
+	} else {
+		$image = $data[0];
+	}
+	return $image;
+}
