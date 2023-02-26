@@ -75,6 +75,7 @@ class Users extends Connection
             $row['driver_id'] = $row['user_id'];
             $row['user_fullname'] = $row['user_fname'] . " " . $row['user_mname'] . " " . $row['user_lname'];
             $row['category'] = $row['category'] == "A" ? '<span class="badge badge-pill badge-info">ADMIN</span>' : ($row['category'] == "U" ? '<span class="badge badge-pill badge-success">USER</span>' : '<span class="badge badge-pill badge-warning">DRIVER</span>');
+            $row['user_category'] = $row['category'];
             $rows[] = $row;
         }
         return $rows;
@@ -86,6 +87,7 @@ class Users extends Connection
         $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
         $row['user_fullname'] = $row['user_fname'] . " " . $row['user_mname'] . " " . $row['user_lname'];
+        $row['user_category'] = $row['category'];
         return $row;
     }
 

@@ -73,7 +73,7 @@
         // upload_documents == upload_documents
         // uploads == user_img
 
-        if (json['category'] == "driver") {
+        if (json['user_category'] == "D") {
 
 
           $("#div_user_canvas").hide();
