@@ -26,11 +26,13 @@ if ($password == "") {
 }
 $img_name = $name;
 $directory = "../assets/uploads/" . $name;
-$result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username',`user_img`='$img_name' $password_query  WHERE `user_id`='$user_id'");
 
-if ($result) {
 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
+
+
+if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
+    $result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username',`user_img`='$img_name' $password_query  WHERE `user_id`='$user_id'");
+    if ($result) {
         $response["res"] = 1;
     } else {
         $response["res"] = 0;
@@ -38,6 +40,7 @@ if ($result) {
 } else {
     $response["res"] = 0;
 }
+
 // $response["res"] = $user_id;
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);
