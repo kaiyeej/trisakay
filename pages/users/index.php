@@ -48,10 +48,65 @@
   </div>
 </div>
 <?php require_once 'modal_users.php'; ?>
+<?php require_once 'modal_images.php'; ?>
 <script type="text/javascript">
   function addUser() {
     addModal();
     $("#div_password").show();
+  }
+
+  function viewIDs(id) {
+    $("#modalImages").modal("show");
+
+    $.ajax({
+      type: "POST",
+      url: "controllers/sql.php?c=" + route_settings.class_name + "&q=view",
+      data: {
+        input: {
+          id: id
+        }
+      },
+      success: function(data) {
+        var jsonParse = JSON.parse(data);
+        const json = jsonParse.data;
+
+        // upload_documents == upload_documents
+        // uploads == user_img
+
+        if(json['user_img'] == "" || json['user_img'] == null){
+          $("#div_user_img").html("<i>No Image found.</>");
+        }else{
+          $("#div_user_img").html("<img class='img-thumbnail' src='assets/uploads/" + json['user_img'] + "'>");
+        }
+
+        if(json['toda_id'] == "" || json['toda_id'] == null){
+          $("#div_toda_id").html("<i>No Image found.</>");
+        }else{
+          $("#div_toda_id").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['toda_id'] + "'>");
+        }
+
+        if(json['franchise_permit'] == "" || json['franchise_permit'] == null){
+          $("#div_franchise_permit").html("<i>No Image found.</>");
+        }else{
+          $("#div_franchise_permit").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['franchise_permit'] + "'>");
+        }
+
+        
+        if(json['or_img'] == "" || json['or_img'] == null){
+          $("#div_or_img").html("<i>No Image found.</>");
+        }else{
+          $("#div_or_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['or_img'] + "'>");
+        }
+        
+        if(json['cr_img'] == "" || json['cr_img'] == null){
+          $("#div_cr_img").html("<i>No Image found.</>");
+        }else{
+          $("#div_cr_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['cr_img'] + "'>");
+        }
+
+        $("#span_license_number").html(json['license_number']);
+      }
+    });
   }
 
   function getUserDetails(id) {
@@ -74,7 +129,7 @@
         },
         {
           "mRender": function(data, type, row) {
-            return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-file-document'></span></button></center>";
+            return "<center class='btn-group'><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-file-document'></span></button><button class='btn btn-danger mb-2 btn-sm' onclick='viewIDs(" + row.user_id + ")'><span class='mdi mdi-account-card-details'></span></button></center>";
           }
         },
         {

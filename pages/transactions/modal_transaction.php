@@ -19,7 +19,7 @@
                         <div class="col-sm-6">
                             <label><strong>Driver</strong></label>
                             <div>
-                            <select style="color:black" class="form-control input-item select2" name="input[driver_id]" id="driver_id" required>
+                            <select style="color:black;padding: 15px;" class="form-control input-item select2" name="input[driver_id]" id="driver_id" required>
                             </select>
                             </div>
                         </div>
@@ -27,16 +27,41 @@
                         <div class="col-sm-6">
                             <label><strong>User</strong></label>
                             <div>
-                            <select style="color:black;" disabled class="form-control input-item" name="input[user_id]" id="user_id" required>
+                            <select style="color:black;padding: 15px;" disabled class="form-control input-item" name="input[user_id]" id="user_id" required>
                             </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label><strong>Total Distance</strong></label>
+                            <div>
+                            <input type="text" class="form-control input-item" name="input[total_distance]" id="total_distance" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label><strong>Fuel Consumption</strong></label>
+                            <div>
+                            <input type="text" class="form-control input-item" name="input[fuel_consumption]" id="fuel_consumption" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
                         <div class="col">
                             <label><strong>Remarks</strong></label>
                             <div>
                             <textarea class="form-control input-item" name="input[remarks]" id="remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col">
+                            <label><strong>Driver Remarks</strong></label>
+                            <div>
+                            <textarea class="form-control input-item" name="input[driver_remarks]" id="driver_remarks" readonly></textarea>
                             </div>
                         </div>
                     </div>
