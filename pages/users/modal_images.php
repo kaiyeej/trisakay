@@ -32,7 +32,7 @@
                         <div id="div_cr_img">
                         </div>
                     </div>
-                    <div class="col-lg-12" style="padding: 10px;">
+                    <div class="col-lg-6" style="padding: 10px;">
                         <span><b style="color:#f77d74;">License Number:</b> <strong id="span_license_number"></strong></span>
                     </div>
                 </div>
