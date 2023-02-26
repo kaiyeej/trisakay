@@ -14,8 +14,11 @@ $response_array['array_data'] = array();
 
 $response = array();
 $result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `status`='F' WHERE transaction_id='$transaction_id'");
+$fetch = $mysqli_connect->query("SELECT user_id FROM tbl_transactions WHERE transaction_id='$transaction_id'");
+$data = $fetch->fetch_array();
 
 if ($result) {
+    sendNotif($data[0], "Trisakay", "Driver successfully brought you to your destination. Thank you!");
     $response["response"] = 1;
 } else {
     $response["response"] = 0;
