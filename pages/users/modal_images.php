@@ -5,7 +5,7 @@
                 <h4 class="modal-title" id="modalLabel"><span class='fa fa-pen'></span></h4>
             </div>
             <div class="modal-body">
-                <div class="row">
+                <div id='div_driver_canvas' class="row">
                     <div class="col-lg-6" style="padding: 10px;">
                         <strong style="color:#f77d74;">User Image</strong><br>
                         <div id="div_user_img">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6" style="padding: 10px;">
-                    <strong style="color:#f77d74;">Certificate of Registration</strong><br>
+                        <strong style="color:#f77d74;">Certificate of Registration</strong><br>
                         <div id="div_cr_img">
                         </div>
                     </div>
@@ -36,8 +36,13 @@
                         <span><b style="color:#f77d74;">License Number:</b> <strong id="span_license_number"></strong></span>
                     </div>
                 </div>
-                <div id="div_pwd_id">
+                <div id='div_user_canvas' class="row">
+                    <div class="col-lg-12" style="padding: 10px;">
+                        <strong style="color:#f77d74;">User Image</strong><br>
+                        <div id="div_user_img2">
 
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

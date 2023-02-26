@@ -8,7 +8,7 @@
             <button class="btn btn-primary btn-sm" onclick="addUser()">
               <i style="font-size: 20px;" class="mdi mdi-plus"></i>
             </button>
-            <button class="btn btn-info btn-sm" onclick='blockEntry()' id='btn_delete'>
+            <button class="btn btn-info btn-sm" onclick='verifyEntry()' id='btn_delete'>
               <i style="font-size: 20px;" class="mdi mdi-check-circle"></i>
             </button>
             <button class="btn btn-danger btn-sm" onclick='deleteEntry()' id='btn_delete'>
@@ -73,38 +73,55 @@
         // upload_documents == upload_documents
         // uploads == user_img
 
-        if(json['user_img'] == "" || json['user_img'] == null){
-          $("#div_user_img").html("<i>No Image found.</>");
-        }else{
-          $("#div_user_img").html("<img class='img-thumbnail' src='assets/uploads/" + json['user_img'] + "'>");
-        }
+        if (json['category'] == "driver") {
 
-        if(json['toda_id'] == "" || json['toda_id'] == null){
-          $("#div_toda_id").html("<i>No Image found.</>");
-        }else{
-          $("#div_toda_id").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['toda_id'] + "'>");
-        }
 
-        if(json['franchise_permit'] == "" || json['franchise_permit'] == null){
-          $("#div_franchise_permit").html("<i>No Image found.</>");
-        }else{
-          $("#div_franchise_permit").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['franchise_permit'] + "'>");
-        }
+          $("#div_user_canvas").hide();
+          $("#div_driver_canvas").show();
 
-        
-        if(json['or_img'] == "" || json['or_img'] == null){
-          $("#div_or_img").html("<i>No Image found.</>");
-        }else{
-          $("#div_or_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['or_img'] + "'>");
-        }
-        
-        if(json['cr_img'] == "" || json['cr_img'] == null){
-          $("#div_cr_img").html("<i>No Image found.</>");
-        }else{
-          $("#div_cr_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['cr_img'] + "'>");
-        }
+          if (json['user_img'] == "" || json['user_img'] == null) {
+            $("#div_user_img").html("<i>No Image found.</>");
+          } else {
+            $("#div_user_img").html("<img class='img-thumbnail' src='assets/uploads/" + json['user_img'] + "'>");
+          }
 
-        $("#span_license_number").html(json['license_number']);
+          if (json['toda_id'] == "" || json['toda_id'] == null) {
+            $("#div_toda_id").html("<i>No Image found.</>");
+          } else {
+            $("#div_toda_id").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['toda_id'] + "'>");
+          }
+
+          if (json['franchise_permit'] == "" || json['franchise_permit'] == null) {
+            $("#div_franchise_permit").html("<i>No Image found.</>");
+          } else {
+            $("#div_franchise_permit").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['franchise_permit'] + "'>");
+          }
+
+
+          if (json['or_img'] == "" || json['or_img'] == null) {
+            $("#div_or_img").html("<i>No Image found.</>");
+          } else {
+            $("#div_or_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['or_img'] + "'>");
+          }
+
+          if (json['cr_img'] == "" || json['cr_img'] == null) {
+            $("#div_cr_img").html("<i>No Image found.</>");
+          } else {
+            $("#div_cr_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['cr_img'] + "'>");
+          }
+
+          $("#span_license_number").html(json['license_number']);
+
+        }else{
+          $("#div_user_canvas").show();
+          $("#div_driver_canvas").hide();
+
+          if (json['user_img'] == "" || json['user_img'] == null) {
+            $("#div_user_img2").html("<i>No Image found.</>");
+          } else {
+            $("#div_user_img2").html("<img class='img-thumbnail' src='assets/uploads/" + json['user_img'] + "'>");
+          }
+        }
       }
     });
   }
@@ -129,7 +146,7 @@
         },
         {
           "mRender": function(data, type, row) {
-            return "<center class='btn-group'><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-file-document'></span></button><button class='btn btn-danger mb-2 btn-sm' onclick='viewIDs(" + row.user_id + ")'><span class='mdi mdi-account-card-details'></span></button></center>";
+            return "<center class='btn-group'><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-file-document'></span></button><button class='btn btn-danger mb-2 btn-sm' onclick='viewIDs(" + row.user_id + " )'><span class='mdi mdi-account-card-details'></span></button></center>";
           }
         },
         {
@@ -162,7 +179,7 @@
     });
   }
 
-  function blockEntry() {
+  function verifyEntry() {
 
     var count_checked = $("input[class='dt_id']:checked").length;
 
@@ -204,7 +221,7 @@
               }
             });
 
-            $("#btn_delete").prop('disabled', true);
+            $("#btn_delete").prop('disabled', false);
 
           } else {
             swal("Cancelled", "Entries are safe :)", "error");
