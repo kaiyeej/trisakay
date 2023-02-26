@@ -197,7 +197,7 @@
                 var json = JSON.parse(data);
                 console.log(json);
                 if (json.data == 1) {
-                  success_block();
+                  success_update();
                 } else {
                   failed_query(json);
                 }
