@@ -34,8 +34,20 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="./history-report">
-        <span class="menu-title">Report</span>
+        <span class="menu-title">Users Report</span>
         <i class="mdi mdi-chart-bar-stacked menu-icon"></i>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="./drivers-report">
+        <span class="menu-title">Drivers Report</span>
+        <i class="mdi mdi-chart-bar menu-icon"></i>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="./transactions-report">
+        <span class="menu-title">Transactions Report</span>
+        <i class="mdi mdi-calendar menu-icon"></i>
         </a>
     </li>
     <li class="nav-item">

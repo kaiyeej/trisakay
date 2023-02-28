@@ -29,12 +29,20 @@ $routes = array(
         'class_name' => 'FareMatrix',
         'has_detail' => 0
     ),
+    "drivers-report" => array(
+        'class_name' => 'Transactions',
+        'has_detail' => 0
+    ),
+    "transactions-report" => array(
+        'class_name' => 'Transactions',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
 
 $base_folder = "pages/";
-$page = str_replace("/", "", $request);
+$page = str_replace("/trisakay/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

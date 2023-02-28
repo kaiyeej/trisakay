@@ -63,7 +63,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                      return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getEntryDetails(" + row.fare_matrix_id + ")'><span class='mdi mdi-file-document'></span></button></center>";
+                      return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getEntryDetails(" + row.fare_matrix_id + ")'><span class='mdi mdi-pencil'></span></button></center>";
                     }
                 },
                 {

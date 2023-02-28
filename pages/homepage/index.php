@@ -42,7 +42,7 @@ $Homepage = new Homepage();
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
                     <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Total Customers <i class="mdi mdi-account-multiple-outline mdi-24px float-right"></i>
+                    <h4 class="font-weight-normal mb-3">Total Passengers <i class="mdi mdi-account-multiple-outline mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5"><?= $Homepage->total_user(); ?></h2>
                   </div>

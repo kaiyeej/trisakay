@@ -16,9 +16,15 @@
           <input type="date" value="<?php echo date('Y-m-t', strtotime(date("Y-m-d"))) ?>" class="form-control input-item" style="padding: 9px;" name="input[end_date]" id="end_date" required>
         </div>
         <div class="col-md-3">
-          <label><strong>User</strong></label>
-          <select class="form-control input-item" style="width: 100%;height: 35px;" name="input[user_id]" id="user_id" required>
-            <option value="">Please Select:</option>
+          <label><strong>Status</strong></label>
+          <select class="form-control input-item" style="width: 100%;height: 35px;" name="input[status]" id="status_t">
+            <option value="-1">ALL</option>
+            <option value="P">Pending</option>
+            <option value="R">Rejected</option>
+            <option value="C">Canceled</option>
+            <option value="A">On-the-way</option>
+            <option value="S">Booked</option>
+            <option value="">Finished</option>
           </select>
         </div>
         <div class="col-md-3" style="padding-top: 20px;">
@@ -45,7 +51,7 @@
           <div class="card-body">
             <div class="table-responsive" id="report_container">
               <center>
-                <h3>Users Report</h3>
+                <h3>Transactions Report</h3>
               </center>
               <table id="dt_entries" class="table table-bordered">
                 <thead>
@@ -78,10 +84,9 @@
   </div>
   <script type="text/javascript">
     function getEntries() {
-      var user_id = $("#user_id").val();
       var start_date = $("#start_date").val();
       var end_date = $("#end_date").val();
-
+      var status_t = $("#status_t").val();
 
       $("#dt_entries").DataTable().destroy();
       $("#dt_entries").DataTable({
@@ -97,8 +102,8 @@
             input: {
               start_date: start_date,
               end_date: end_date,
-              user_id: user_id,
-              type: 'U'
+              status_t: status_t,
+              type: 'T'
             }
           },
         },
@@ -172,7 +177,7 @@
     }
 
     $(document).ready(function() {
-      getSelectOption('Users', 'user_id', 'user_fullname', "category='U'", [], -1, 'All');
+      //getSelectOption('Users', 'user_id', 'user_fullname', "category='U'", [], -1, 'All');
       getEntries();
     });
   </script>

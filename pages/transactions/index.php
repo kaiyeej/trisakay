@@ -61,13 +61,13 @@
         $("#dt_entries").DataTable({
             "processing": true,
             "ajax": {
-                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show",
+                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show2",
                 "dataSrc": "data"
             },
             "columns": [
                 {
                     "mRender": function(data, type, row) {
-                      return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.transaction_id + ")'><span class='mdi mdi-file-document'></span></button></center>";
+                      return "<center><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.transaction_id + ")'><span class='mdi mdi-pencil'></span></button></center>";
                     }
                 },
                 {

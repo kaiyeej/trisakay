@@ -146,7 +146,7 @@
         },
         {
           "mRender": function(data, type, row) {
-            return "<center class='btn-group'><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-file-document'></span></button><button class='btn btn-danger mb-2 btn-sm' onclick='viewIDs(" + row.user_id + " )'><span class='mdi mdi-account-card-details'></span></button></center>";
+            return "<center class='btn-group'><button class='btn btn-primary mb-2 btn-sm' onclick='getUserDetails(" + row.user_id + ")'><span class='mdi mdi-pencil'></span></button><button class='btn btn-danger mb-2 btn-sm' onclick='viewIDs(" + row.user_id + " )'><span class='mdi mdi-account-card-details'></span></button></center>";
           }
         },
         {
@@ -164,7 +164,7 @@
             if (row.status == 1) {
               return '<span>Verified </span><i style="font-size: 20px; color: #198ae3;" class="mdi mdi-check-circle">';
             } else {
-              return '<i style="font-size: 20px; color: #fe7c96;" class="mdi mdi-close-circle">';
+              return '<i style="font-size: 35px; color: #ffc107;" class="mdi mdi-exclamation">';
             }
 
           }

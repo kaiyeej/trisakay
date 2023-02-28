@@ -37,9 +37,54 @@ class Transactions extends Connection
     {
         $rows = array();
         $Users = new Users();
-        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
+        $start_date = $this->inputs['start_date'];
+        $end_date = $this->inputs['end_date'];
+        $type = $this->inputs['type'];
+
+        if($type == "T"){
+            $status = $this->inputs['status_t'];
+    
+            if($status < 0){
+                $param = "date_added BETWEEN '$start_date' AND DATE_ADD('$end_date', INTERVAL 1 DAY)";
+            }else{
+                $param = "status = '$status' AND date_added BETWEEN '$start_date' AND DATE_ADD('$end_date', INTERVAL 1 DAY)";
+            }
+            
+        }else{
+            
+            $user_id = $this->inputs['user_id'];
+            if($user_id < 0){
+                $param = "date_added BETWEEN '$start_date' AND DATE_ADD('$end_date', INTERVAL 1 DAY)";
+            }else{
+                if($type == "D"){
+                    $param = "driver_id = '$user_id' AND date_added BETWEEN '$start_date' AND DATE_ADD('$end_date', INTERVAL 1 DAY)";
+                }else if($type == "U"){
+                    $param = "user_id = '$user_id' AND date_added BETWEEN '$start_date' AND DATE_ADD('$end_date', INTERVAL 1 DAY)";
+                }
+            }
+        }
+
+
         $result = $this->select($this->table, '*', $param);
+        while ($row = $result->fetch_assoc()) {
+            $review = $this->ratings($row['transaction_id']);
+
+            $row['driver'] = $Users->getUser($row['driver_id']);
+            $row['user'] = $Users->getUser($row['user_id']);
+            $row['rating'] = $review[0] > 0 ?  $review[0]."/5" : "---";
+            $row['remarks'] = $review[1];
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+    public function show2()
+    {
+        $rows = array();
+        $Users = new Users();
+        $rows = array();
+        $result = $this->select($this->table, '*');
         while ($row = $result->fetch_assoc()) {
             $review = $this->ratings($row['transaction_id']);
 

@@ -16,7 +16,7 @@
           <input type="date" value="<?php echo date('Y-m-t', strtotime(date("Y-m-d"))) ?>" class="form-control input-item" style="padding: 9px;" name="input[end_date]" id="end_date" required>
         </div>
         <div class="col-md-3">
-          <label><strong>User</strong></label>
+          <label><strong>Driver</strong></label>
           <select class="form-control input-item" style="width: 100%;height: 35px;" name="input[user_id]" id="user_id" required>
             <option value="">Please Select:</option>
           </select>
@@ -45,7 +45,7 @@
           <div class="card-body">
             <div class="table-responsive" id="report_container">
               <center>
-                <h3>Users Report</h3>
+                <h3>Drivers Report</h3>
               </center>
               <table id="dt_entries" class="table table-bordered">
                 <thead>
@@ -98,7 +98,7 @@
               start_date: start_date,
               end_date: end_date,
               user_id: user_id,
-              type: 'U'
+              type: 'D'
             }
           },
         },
@@ -172,7 +172,7 @@
     }
 
     $(document).ready(function() {
-      getSelectOption('Users', 'user_id', 'user_fullname', "category='U'", [], -1, 'All');
+      getSelectOption('Users', 'user_id', 'user_fullname', "category='D'", [], -1, 'All');
       getEntries();
     });
   </script>
