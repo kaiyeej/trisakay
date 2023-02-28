@@ -31,19 +31,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col-lg-6">
-                        <div class="form-group">
-                            <label><strong>Category</strong></label>
-                            <div>
-                            <select class="form-control input-item" name="input[category]" id="category" style="height:45px;" required>
-                                <option value="">&mdash; Please Select &mdash;</option>
-                                <option value="A">Admin</option>
-                                <option value="D">Driver</option>
-                                <option value="U">User</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label><strong>Username</strong></label>
@@ -56,7 +43,7 @@
                         <div class="form-group">
                             <label><strong>Status</strong></label>
                             <div>
-                            <select class="form-control input-item" name="input[status]" id="status" style="height:45px;" required>
+                            <select class="form-control input-item" name="input[status]" id="status" style="height:45px;color:black;" required>
                                 <option value="1">Enabled</option>
                                 <option value="-1">Disabled</option>
                                 <option value="0">Pending</option>
@@ -64,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="col-lg-6">
                         <div id="div_password" class="form-group">
                             <label><strong>Password</strong></label>
                             <div>
@@ -72,6 +59,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label><strong>Category</strong></label>
+                            <div>
+                            <select class="form-control input-item" name="input[category]" id="category" style="height:45px;color:black;" required>
+                                <option value="">&mdash; Please Select &mdash;</option>
+                                <option value="A">Admin</option>
+                                <option value="D">Driver</option>
+                                <option value="U">User</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">
