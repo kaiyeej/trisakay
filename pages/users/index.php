@@ -53,6 +53,7 @@
   function addUser() {
     addModal();
     $("#div_password").show();
+    checkCategory();
   }
 
   function viewIDs(id) {
@@ -112,7 +113,7 @@
 
           $("#span_license_number").html(json['license_number']);
 
-        }else{
+        } else {
           $("#div_user_canvas").show();
           $("#div_driver_canvas").hide();
 
@@ -127,8 +128,9 @@
   }
 
   function getUserDetails(id) {
-    $("#div_password").hide();
     getEntryDetails(id);
+    $("#div_password").hide();
+    checkCategory();
   }
 
   function getEntries() {
@@ -229,6 +231,15 @@
         });
     } else {
       swal("Cannot proceed!", "Please select entries to delete!", "warning");
+    }
+  }
+
+  function checkCategory(){
+    var category = $("#category").val();
+    if(category == "D"){
+      $(".canvas_driver").show();
+    }else{
+      $(".canvas_driver").hide();
     }
   }
 

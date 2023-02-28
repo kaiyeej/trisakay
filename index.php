@@ -277,6 +277,8 @@ if (!isset($_SESSION["trisakay_user_id"])) {
             this.value = json[id_name];
           });
 
+          route_settings.class_name == "Users"  ? $(".canvas_driver").show() : "" ;
+
           //$(".select2").select2().trigger('change');
 
           $("#modalLabel").html("<span class='fa fa-pen'></span> Update Entry");

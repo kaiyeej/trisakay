@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label><strong>Category</strong></label>
                             <div>
-                            <select class="form-control input-item" name="input[category]" id="category" style="height:45px;color:black;" required>
+                            <select class="form-control input-item" onchange="checkCategory()" name="input[category]" id="category" style="height:45px;color:black;" required>
                                 <option value="">&mdash; Please Select &mdash;</option>
                                 <option value="A">Admin</option>
                                 <option value="D">Driver</option>
@@ -73,22 +73,45 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="col-lg-6">
-                        <div id="div_password" class="form-group">
+                    <div class="col-lg-6 canvas_driver">
+                        <div class="form-group">
                             <label><strong>Plate #</strong></label>
                             <div>
                             <input type="text" class="form-control input-item" name="input[plate_number]" autocomplete="off" id="plate_number" placeholder="Plate number">
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div id="div_password" class="form-group">
+                    <div class="col-lg-6 canvas_driver">
+                        <div class="form-group">
                             <label><strong>Manufacturer</strong></label>
                             <div>
                             <input type="text" class="form-control input-item" name="input[manufacturer]" autocomplete="off" id="manufacturer" placeholder="Manufacturer">
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 canvas_driver">
+                        <div class="form-group">
+                            <label><strong>Year</strong></label>
+                            <input type="number" class="form-control input-item" name="input[year]" autocomplete="off" id="year" placeholder="Year">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 canvas_driver">
+                        <div class="form-group">
+                            <label><strong>Color</strong></label>
+                            <input type="text" class="form-control input-item" name="input[color]" autocomplete="off" id="color" placeholder="Color">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 canvas_driver">
+                        <div class="form-group">
+                            <label><strong>Model</strong></label>
+                            <select class="form-control input-item" name="input[model]" id="model" style="height:45px;color:black;" >
+                                <option value="">Please Select:</option>
+                                <option value="Bajaj">Bajaj</option>
+                                <option value="Barako">Barako</option>
+                            </select>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">

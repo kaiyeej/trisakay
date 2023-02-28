@@ -22,7 +22,12 @@ class Users extends Connection
                 'date_added' => $this->getCurrentDate(),
                 'username' => $this->inputs['username'],
                 'status' => $this->inputs['status'],
-                'password' => md5($pass)
+                'password' => md5($pass),
+                'plate_number'  => $this->inputs['plate_number'],
+                'model'  => $this->inputs['model'],
+                'manufacturer'  => $this->inputs['manufacturer'],
+                'year'  => $this->inputs['year'],
+                'color'  => $this->inputs['color'],
             );
             return $this->insert($this->table, $form);
         }
@@ -43,7 +48,12 @@ class Users extends Connection
                 'user_lname' => $this->inputs['user_lname'],
                 'category' => $this->inputs['category'],
                 'status' => $this->inputs['status'],
-                'username' => $username
+                'username' => $username,
+                'plate_number'  => $this->inputs['plate_number'],
+                'model'  => $this->inputs['model'],
+                'manufacturer'  => $this->inputs['manufacturer'],
+                'year'  => $this->inputs['year'],
+                'color'  => $this->inputs['color'],
             );
             return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }
