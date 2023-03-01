@@ -45,7 +45,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="./transactions-report">
+        <a class="nav-link" href="./transaction-report">
         <span class="menu-title">Transactions Report</span>
         <i class="mdi mdi-calendar menu-icon"></i>
         </a>

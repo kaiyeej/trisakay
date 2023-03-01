@@ -33,7 +33,14 @@
                         </div>
                     </div>
                     <div class="col-lg-6" style="padding: 10px;">
-                        <span><b style="color:#f77d74;">License Number:</b> <strong id="span_license_number"></strong></span>
+                        <strong style="color:#f77d74;">Vehicle Image</strong><br>
+                        <div id="div_vehicle_img">
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding: 10px;">
+                        <span><b style="color:#f77d74;">License Number</b><br>
+                         <strong id="span_license_number"></strong>
+                        </span>
                     </div>
                 </div>
                 <div id='div_user_canvas' class="row">
