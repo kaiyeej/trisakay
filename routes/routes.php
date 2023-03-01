@@ -33,7 +33,7 @@ $routes = array(
         'class_name' => 'Transactions',
         'has_detail' => 0
     ),
-    "transactions-report" => array(
+    "transaction-report" => array(
         'class_name' => 'Transactions',
         'has_detail' => 0
     ),
