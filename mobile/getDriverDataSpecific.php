@@ -20,7 +20,11 @@ while ($row = $fetch->fetch_array()) {
 	$response['image'] = getUserImage($row['user_id']);
 	$response["latitude"] = $row['latitude'];
 	$response["longitude"] = $row['longitude'];
-	$response["session_id"] = $user_id;
+	$response["plate_number"] = $row['plate_number'];
+	$response["manufacturer"] = $row['manufacturer'];
+	$response["model"] = $row['model'];
+	$response["year"] = $row['year'];
+	$response["color"] = $row['color'];
 	$response["status"] = getTransactionStatus($user_id, $row['user_id']);
 
 
