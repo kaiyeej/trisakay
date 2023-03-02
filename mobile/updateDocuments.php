@@ -14,8 +14,8 @@ $manufacturer = $_REQUEST['manufacturer'];
 $model = $_REQUEST['model'];
 $year = $_REQUEST['year'];
 $color = $_REQUEST['color'];
-
-$imageStatus = $_REQUEST['imageStatus'];
+$motor_type = $_REQUEST['motor_type'];
+// $imageStatus = $_REQUEST['imageStatus'];
 
 
 $toda_name = $_FILES['toda']['name'];
@@ -47,7 +47,7 @@ $cr_directory = "../assets/upload_documents/" . $cr_img_name;
 $vehicle_directory = "../assets/upload_documents/" . $vehicle_img_name;
 
 
-$result = $mysqli_connect->query("UPDATE `tbl_users` SET `license_number`='$license_number',`toda_id`='$toda_img_name',`franchise_permit`='$franchise_img_name',`or_img`='$or_img_name ',`cr_img`='$cr_img_name', `vehicle_img`='$vehicle_img_name',`plate_number`='$plate_number',`manufacturer`='$manufacturer',`model`='$model',`year`='$year',`color`='$color' WHERE `user_id`='$user_id'");
+$result = $mysqli_connect->query("UPDATE `tbl_users` SET `license_number`='$license_number',`toda_id`='$toda_img_name',`franchise_permit`='$franchise_img_name',`or_img`='$or_img_name ',`cr_img`='$cr_img_name', `vehicle_img`='$vehicle_img_name',`plate_number`='$plate_number',`manufacturer`='$manufacturer',`model`='$model',`year`='$year',`color`='$color', `motor_type`='$motor_type' WHERE `user_id`='$user_id'");
 
 if ($result) {
 
