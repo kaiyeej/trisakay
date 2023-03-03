@@ -20,7 +20,7 @@ $response_array['array_data'] = array();
 
 
 
-$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `amount`='$fare_amount', `total_distance`='$distance',`fuel_consumption`='$fuel_consumption' WHERE user_id='$user_id' AND driver_id='$driver_id' AND STATUS='S' AND amount=''");
+$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `amount`='$fare_amount', `total_distance`='$distance',`fuel_consumption`='$fuel_consumption' WHERE user_id='$user_id' AND driver_id='$driver_id' AND STATUS='S' AND amount is NULL");
 
 if ($result) {
     $response['response'] = 1;

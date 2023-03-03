@@ -45,6 +45,7 @@ if ($count_users['category'] == 'U') {
     $data = $getUser->fetch_array();
 
     if ($result_id_token) {
+        $mysqli_connect->query("UPDATE `tbl_users` SET `active_status`='1' WHERE `user_id`='$count_users[user_id]'");
         $response["user_fname"] = $data['user_fname'];
         $response["user_lname"] = $data['user_lname'];
         $response["contact_number"] = $data['contact_number'];
