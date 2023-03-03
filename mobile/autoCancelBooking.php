@@ -13,7 +13,7 @@ $driver_user_id = $_REQUEST['driver_user_id'];
 $response_array['array_data'] = array();
 
 $response = array();
-$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `status`='C' WHERE user_id='$user_id' AND driver_id='$driver_user_id' AND status='A'");
+$result = $mysqli_connect->query("UPDATE `tbl_transactions` SET `status`='C' WHERE user_id='$user_id' AND driver_id='$driver_user_id' AND status='A' OR status='S'");
 
 if ($result) {
     $response["response"] = 1;
