@@ -23,6 +23,7 @@ while ($data = $fetch_users->fetch_array()) {
     $response['remarks'] = $data['remarks'];
     $response['driver_id'] = $data['driver_id'];
     $response['fuel_consumption'] = $data['fuel_consumption'];
+    $response['total_distance'] = $data['total_distance'];
     $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     $response['rating_status'] = checkDriverRating($data['transaction_id']);
     $response['rating_remarks'] = getRatingRemarks($data['transaction_id']);
