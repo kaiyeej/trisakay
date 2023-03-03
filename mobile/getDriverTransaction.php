@@ -22,6 +22,7 @@ while ($data = $fetch_users->fetch_array()) {
     $response['amount'] = number_format($data['amount'], 2);
     $response['status'] = $data['status'];
     $response['remarks'] = $data['remarks'];
+    $response['fuel_consumption'] = $data['fuel_consumption'];
     $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     array_push($response_array['array_data'], $response);
 }
