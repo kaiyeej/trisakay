@@ -26,6 +26,7 @@ while ($row = $fetch->fetch_array()) {
 	$response["year"] = $row['year'];
 	$response["color"] = $row['color'];
 	$response["status"] = getTransactionStatus($user_id, $row['user_id']);
+	$response["motor_type"] = $row['motor_type'];
 
 
 
