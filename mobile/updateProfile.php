@@ -49,6 +49,19 @@ if ($no_image == 1) {
         $response["res"] = 0;
     }
 } else {
+    $name = $_FILES['file']['name'];
+    $type = $_FILES['file']['type'];
+    $size = $_FILES['file']['size'];
+
+
+    if ($password == "") {
+        $password_query = "";
+    } else {
+        $password_query = ",`password`=md5('$password')";
+    }
+    $img_name = $name;
+    $directory = "../assets/uploads/" . $name;
+
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $directory)) {
         $result = $mysqli_connect->query("UPDATE `tbl_users` SET `user_fname`='$user_fname',`user_mname`='$user_mname',`user_lname`='$user_lname',`username`='$username',`user_img`='$img_name' $password_query  WHERE `user_id`='$user_id'");
         if ($result) {

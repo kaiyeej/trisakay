@@ -21,6 +21,7 @@ $response["user_id"] = $data['user_id'];
 $response["user_fname"] = $data['user_fname'];
 $response["user_mname"] = $data['user_mname'];
 $response["user_lname"] = $data['user_lname'];
+$response["category"] = $data['category'];
 $response["username"] = $data['username'];
 $response["license_number"] = $data['license_number'];
 $response["toda_id"] = $data['toda_id'];
