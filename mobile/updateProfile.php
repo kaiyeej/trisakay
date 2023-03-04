@@ -49,6 +49,8 @@ if ($no_image == 1) {
         $response["res"] = 0;
     }
 } else {
+
+
     $name = $_FILES['file']['name'];
     $type = $_FILES['file']['type'];
     $size = $_FILES['file']['size'];
