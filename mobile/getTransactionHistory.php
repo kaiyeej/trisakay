@@ -27,6 +27,7 @@ while ($data = $fetch_users->fetch_array()) {
     $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     $response['rating_status'] = checkDriverRating($data['transaction_id']);
     $response['rating_remarks'] = getRatingRemarks($data['transaction_id']);
+    $response['rating'] = getRating($data['transaction_id']);
     array_push($response_array['array_data'], $response);
 }
 
