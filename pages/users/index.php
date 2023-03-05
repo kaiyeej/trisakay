@@ -111,6 +111,12 @@
             $("#div_cr_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['cr_img'] + "'>");
           }
 
+          if (json['vehicle_img'] == "" || json['vehicle_img'] == null) {
+            $("#div_vehicle_img").html("<i>No Image found.</>");
+          } else {
+            $("#div_vehicle_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['vehicle_img'] + "'>");
+          }
+
           $("#span_license_number").html(json['license_number']);
 
         } else {
@@ -164,7 +170,7 @@
           "mRender": function(data, type, row) {
 
             if (row.status == 1) {
-              return '<span>Verified </span><i style="font-size: 20px; color: #198ae3;" class="mdi mdi-check-circle">';
+              return '<span>Verified </span><i style="font-size: 20px; color:#8bc34a;" class="mdi mdi-check-circle">';
             } else {
               return '<i style="font-size: 35px; color: #ffc107;" class="mdi mdi-exclamation">';
             }
@@ -188,7 +194,7 @@
     if (count_checked > 0) {
       swal({
           title: "Are you sure?",
-          text: "You will be an account to login.",
+          text: "The user will be marked as verified.",
           type: "warning",
           showCancelButton: true,
           confirmButtonClass: "btn-danger",

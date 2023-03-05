@@ -130,7 +130,19 @@ function getRatingFunc($driver_id)
 	}
 	return $result;
 }
-
+function getRating($transaction_id)
+{
+	global $mysqli_connect;
+	$fetch = $mysqli_connect->query("SELECT rating FROM tbl_ratings WHERE transaction_id='$transaction_id'");
+	$data = $fetch->fetch_array();
+	$count = $fetch->num_rows;
+	if ($count > 0) {
+		$result = number_format($data['rating'], 1);
+	} else {
+		$result = 0;
+	}
+	return $result;
+}
 function getDistance($gpsLat, $gpsLong, $userLat, $userLong, $userRadius)
 {
 	$isInsideRadius = 0;

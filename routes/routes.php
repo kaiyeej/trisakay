@@ -33,7 +33,7 @@ $routes = array(
         'class_name' => 'Transactions',
         'has_detail' => 0
     ),
-    "transactions-report" => array(
+    "transaction-report" => array(
         'class_name' => 'Transactions',
         'has_detail' => 0
     ),
@@ -42,7 +42,7 @@ $routes = array(
 
 
 $base_folder = "pages/";
-$page = str_replace("/trisakay/", "", $request);
+$page = str_replace("/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

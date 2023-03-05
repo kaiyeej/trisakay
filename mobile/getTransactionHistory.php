@@ -12,7 +12,7 @@ $user_id = $_REQUEST['user_id'];
 
 $response_array['array_data'] = array();
 
-$fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `status`='F' OR `status`='C' AND user_id='$user_id'");
+$fetch_users = $mysqli_connect->query("SELECT * FROM tbl_transactions WHERE `status`=(`status`='F' AND `status`='C') AND user_id='$user_id'");
 
 while ($data = $fetch_users->fetch_array()) {
     $response = array();
@@ -22,9 +22,12 @@ while ($data = $fetch_users->fetch_array()) {
     $response['status'] = $data['status'];
     $response['remarks'] = $data['remarks'];
     $response['driver_id'] = $data['driver_id'];
+    $response['fuel_consumption'] = $data['fuel_consumption'];
+    $response['total_distance'] = $data['total_distance'];
     $response['date_added'] =  date('F j, Y', strtotime($data['date_added']));
     $response['rating_status'] = checkDriverRating($data['transaction_id']);
     $response['rating_remarks'] = getRatingRemarks($data['transaction_id']);
+    $response['rating'] = getRating($data['transaction_id']);
     array_push($response_array['array_data'], $response);
 }
 
