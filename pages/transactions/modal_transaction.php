@@ -50,7 +50,7 @@
                     
                     <div class="form-group row">
                         <div class="col">
-                            <label><strong>Remarks</strong></label>
+                            <label><strong>Passenger Remarks</strong></label>
                             <div>
                             <textarea class="form-control input-item" name="input[remarks]" id="remarks"></textarea>
                             </div>

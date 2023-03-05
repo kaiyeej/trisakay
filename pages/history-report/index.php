@@ -54,7 +54,8 @@
                     <th>User</th>
                     <th>Driver</th>
                     <th>Amount</th>
-                    <th>Remarks</th>
+                    <th>Driver Remarks</th>
+                    <th>Passenger Remarks</th>
                     <th>Rating</th>
                     <th>Status</th>
                     <th>Date</th>
@@ -138,6 +139,9 @@
           },
           {
             "data": "amount", className: "text-right"
+          },
+          {
+            "data": "driver_remarks"
           },
           {
             "data": "remarks"
