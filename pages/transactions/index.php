@@ -23,7 +23,7 @@
         <div class="card-body">
           <h4 class="card-title">Manage Transactions</h4>
           <div class="table-responsive">
-            <table id="dt_entries" class="table table-bordered">
+            <table id="dt_entries" class="table table-hover" style="width:100%">
               <thead>
                 <tr>
                     <th></th>
@@ -34,7 +34,6 @@
                     <th>Remarks</th>
                     <th>Rating</th>
                     <th>Status</th>
-                    <th>Date Added</th>
                     <th>Date Modified</th>
                 </tr>
               </thead>
@@ -60,6 +59,7 @@
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
             "processing": true,
+            "scrollX": true,
             "ajax": {
                 "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show2",
                 "dataSrc": "data"
@@ -106,9 +106,6 @@
                     }
                       
                   }
-                },
-                {
-                    "data": "date_added"
                 },
                 {
                     "data": "date_last_modified"
