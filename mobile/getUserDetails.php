@@ -36,5 +36,6 @@ $response["model"] = $data['model'];
 $response["year"] = $data['year'];
 $response["color"] = $data['color'];
 $response["valid_id_img"] = $data['valid_id_img'];
+$response["motor_type"] = $data['motor_type'];
 array_push($response_array['array_data'], $response);
 echo json_encode($response_array);
