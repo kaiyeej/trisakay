@@ -129,6 +129,12 @@
             $("#div_user_img2").html("<img class='img-thumbnail' src='assets/uploads/" + json['user_img'] + "'>");
           }
         }
+
+        if (json['valid_id_img'] == "" || json['valid_id_img'] == null) {
+            $(".div_valid_id_img").html("<i>No Image found.</>");
+          } else {
+            $(".div_valid_id_img").html("<img class='img-thumbnail' src='assets/upload_documents/" + json['valid_id_img'] + "'>");
+          }
       }
     });
   }
